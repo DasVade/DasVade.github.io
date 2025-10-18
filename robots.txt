@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://DasVade.github.io/sitemap.xml
+Sitemap: https://yixiaoliu.me/sitemap.xml
