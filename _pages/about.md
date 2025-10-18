@@ -5,7 +5,7 @@ permalink: /
 
 subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a> · MEAM Department · Robotics & Control
 profile:
-  align: left
+  align: right
   image: me.jpg
   image_circular: ture # crops the image to make it circular
   more_info: >
@@ -26,8 +26,10 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am an undergraduate student in Mechanical Engineering and Applied Mechanics (MEAM) at the University of Pennsylvania.  
+I am currently working on robotics and control systems, focusing on dynamic modeling, optimal control, and simulation-based methods for motion planning.  
+Previously, I interned at United Automotive Electronic Systems (UAES) in Shanghai, where I worked on power electronics manufacturing and digital twin optimization.  
+I have also worked on several projects involving manipulator dynamics, servo control, and quadrotor trajectory optimization under the MEAM curriculum at Penn.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+My research interests lie at the intersection of robotics, control theory, and machine learning.  
+I am broadly interested in how model-based and data-driven methods can be integrated to enable intelligent and physically grounded robotic systems.
