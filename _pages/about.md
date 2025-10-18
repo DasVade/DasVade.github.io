@@ -7,7 +7,7 @@ subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsyl
 profile:
   align: right
   image: me.jpg
-  image_circular: ture # crops the image to make it circular
+  image_circular: false # crops the image to make it circular
   more_info: >
     <p>Philadelphia, PA, USA</p>
     <p><a href="mailto:yxlewis@seas.upenn.edu">yxlewis@seas.upenn.edu</a></p>
@@ -33,3 +33,7 @@ I have also worked on several projects involving manipulator dynamics, servo con
 
 My research interests lie at the intersection of robotics, control theory, and machine learning.  
 I am broadly interested in how model-based and data-driven methods can be integrated to enable intelligent and physically grounded robotic systems.
+
+## Projects
+{% include projects.liquid limit=3 %}
+[See all projects →](/projects)
