@@ -28,7 +28,7 @@ latest_posts:
 
 I am a senior in Mechanical Engineering and Applied Mechanics (MEAM) at the University of Pennsylvania.  
 
-I am currently working on learning-based simulation and neural representations for robotics, with a focus on connecting physical modeling and data-driven methods for motion and control.
+I am currently working on learning-based simulation with a focus on connecting physical modeling and data-driven methods for motion and control.
 My research interests lie at the intersection of robotics, control, and machine learning, emphasizing dynamic modeling, optimal control, and physics-informed neural simulation.
 
 Previously, I worked on robot control and dynamics projects at the University of Pennsylvania, including manipulator modeling, servo design, and quadrotor trajectory optimization.
