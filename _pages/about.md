@@ -45,5 +45,5 @@ My research interests lie at the intersection of robotics, control, and machine 
   *SJTU–Penn 3+1+1 Joint Program*, 2025  
   
 - Outstanding Course Project Award  
-  *ME3220: Design and Manufacture II*, 2024
+  *SJTU ME3220: Design and Manufacture II*, 2024
   
