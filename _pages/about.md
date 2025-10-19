@@ -44,6 +44,6 @@ My research interests lie at the intersection of robotics, control, and machine 
 - Exchange Scholarship (Tuition Waived)  
   *SJTU–Penn 3+1+1 Joint Program*, 2025  
   
-- Outstanding Course Project Award
+- Outstanding Course Project Award  
   *ME3220: Design and Manufacture II*, 2024
   
