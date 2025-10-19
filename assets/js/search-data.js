@@ -142,7 +142,7 @@ ninja.data = [{
         title: 'LinkedIn',
         section: 'Socials',
         handler: () => {
-          window.open("https://www.linkedin.com/in/Yixiao Liu", "_blank");
+          window.open("https://www.linkedin.com/in/yixiao-liu-358694382", "_blank");
         },
       },{
       id: 'light-theme',
