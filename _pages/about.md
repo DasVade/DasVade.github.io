@@ -26,10 +26,13 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am an undergraduate student in Mechanical Engineering and Applied Mechanics (MEAM) at the University of Pennsylvania.  
-I am currently working on robotics and control systems, focusing on dynamic modeling, optimal control, and simulation-based methods for motion planning.  
-Previously, I interned at United Automotive Electronic Systems (UAES) in Shanghai, where I worked on power electronics manufacturing and digital twin optimization.  
-I have also worked on several projects involving manipulator dynamics, servo control, and quadrotor trajectory optimization under the MEAM curriculum at Penn.
+I am a senior in Mechanical Engineering and Applied Mechanics (MEAM) at the University of Pennsylvania.  
+
+I am currently working on learning-based simulation and neural representations for robotics, with a focus on connecting physical modeling and data-driven methods for motion and control.
+My research interests lie at the intersection of robotics, control, and machine learning, emphasizing dynamic modeling, optimal control, and physics-informed neural simulation.
+
+Previously, I worked on robot control and dynamics projects at the University of Pennsylvania, including manipulator modeling, servo design, and quadrotor trajectory optimization.
+Earlier, during my studies at Shanghai Jiao Tong University, I developed robotic simulation systems and explored dynamics-based control methods.
 
 My research interests lie at the intersection of robotics, control theory, and machine learning.  
 I am broadly interested in how model-based and data-driven methods can be integrated to enable intelligent and physically grounded robotic systems.
@@ -37,3 +40,13 @@ I am broadly interested in how model-based and data-driven methods can be integr
 ## Projects
 {% include projects.liquid limit=3 %}
 [See all projects →](/projects)
+
+---
+
+## Awards
+
+- Exchange Scholarship (Tuition Waived)  
+  *SJTU–Penn 3+1+1 Joint Program*, 2025  
+  
+- Outstanding Course Project Award — ME3220: Design and Manufacture II 2024
+  
