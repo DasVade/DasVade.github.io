@@ -5,7 +5,7 @@ permalink: /
 
 subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a> · MEAM Department · Robotics & Control
 profile:
-  align: left
+  align: right
   image: me.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
@@ -33,6 +33,8 @@ I am currently working on learning-based simulation with a focus on connecting p
 Earlier, during my studies at Shanghai Jiao Tong University, I developed robotic simulation systems and explored dynamics-based control methods.
 
 My research interests lie at the intersection of robotics, control, and machine learning, emphasizing dynamic modeling, optimal control, and physics-informed neural simulation.
+
+---
 
 ## Projects
 {% include projects.liquid limit=3 %}
