@@ -191,7 +191,6 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
-  - _news
   - _bibliography
   - _posts
   - _includes/repository
