@@ -5,10 +5,11 @@ permalink: /
 
 subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a> · MEAM Department · Robotics & Control
 profile:
-  align: right
+  align: left
   image: me.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
+    <p>University of Pennsylvania</p>
     <p>Philadelphia, PA, USA</p>
     <p><a href="mailto:yxlewis@seas.upenn.edu">yxlewis@seas.upenn.edu</a></p>
 
