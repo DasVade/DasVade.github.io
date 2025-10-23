@@ -35,7 +35,6 @@ Earlier, during my studies at Shanghai Jiao Tong University, I developed robotic
 
 My research interests lie at the intersection of robotics, control, and machine learning, emphasizing dynamic modeling, optimal control, and physics-informed neural simulation.
 
-{% include news.liquid %}
 
 ---
 
