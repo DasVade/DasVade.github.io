@@ -7,7 +7,7 @@ subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsyl
 subtitle: 
 profile:
   align: right
-  image: me.jpg.jpg
+  image: me.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Mail-3820 Locust Walk, RM 102967</p>
