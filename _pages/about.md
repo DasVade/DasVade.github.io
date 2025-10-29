@@ -2,6 +2,7 @@
 layout: about
 title: about
 permalink: /
+subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a>. Senior in MEAM Department.
 
 subtitle: 
 profile:
@@ -9,8 +10,7 @@ profile:
   image: me.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p><a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a><p>
-    <p>MEAM Department</p>
+    <p>Mail-3820 Locust Walk, RM 102967</p>
     <p>Philadelphia, PA</p>
     <p>yxlewis@seas.upenn.edu</p>
 
