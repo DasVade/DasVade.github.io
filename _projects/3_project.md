@@ -1,66 +1,122 @@
 ---
 layout: page
-title: UR16e Manipulator Control
-description: Model-based torque control and real-time trajectory optimization
+title: UR16e Industrial Robot — Modeling, Planning, and Control
+description: Kinematics, dynamics, collision detection, RRT+B-spline planning, time-optimal trajectory generation, and computed-torque/robust control with Simulink-URDF simulation.
 img: assets/img/ur16e_cover.jpg
-importance: 1
+importance: 2
 category: research
 related_publications: false
 ---
 
-Developed a complete **model-based control framework** for the 6-DOF UR16e robotic arm, focusing on inverse dynamics control, trajectory optimization, and torque-level feedback under ROS and Python.
-
-This project served as a bridge between analytical control methods and data-driven modeling. The implemented controller achieved high-precision trajectory tracking with under 1° average error in simulation.
+This project focuses on the **UR16e industrial manipulator**, completing a full pipeline from **kinematic and dynamic modeling**, **collision detection**, **path planning and smoothing**, and **time-optimal trajectory generation** to **controller design and simulation**.  
+The system is validated by importing the **SolidWorks assembly into MATLAB/Simulink** through **URDF**, supporting a flexible manufacturing scenario involving pick-and-place and palletizing tasks.
 
 ---
+
+## 1. Kinematic and Dynamic Modeling
+
+- **Forward Kinematics (FK):** Established using **DH parameters** for a 6-DOF joint chain; results verified with MATLAB’s Robotics Toolbox.  
+- **Inverse Kinematics (IK):** Applied the **Newton–Raphson iterative method** (after testing the spherical-wrist approximation) to solve joint angles; consistent with toolbox results.  
+- **Inverse Dynamics (ID):** Implemented the **Newton–Euler recursive algorithm** from end-effector to base to compute joint torques.  
+- **Forward Dynamics (FD):** Derived \(M(q)\), \(C(q,\dot q)\), and \(G(q)\) via the Lagrangian formulation:
+  \[
+  M(q)\ddot q + C(q,\dot q)\dot q + G(q) = \tau
+  \]
+  enabling computation of joint accelerations consistent with the analytical model.
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/ur16e_simulation.png" title="UR16e simulation environment" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/ur16e_control_loop.png" title="Control structure diagram" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/ur16e_joint_tracking.png" title="Joint trajectory tracking" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
-<div class="caption">
-    Left: Gazebo-based simulation of UR16e; Middle: Model-based torque control diagram; Right: Joint tracking results from the implemented controller.
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/ur16e_dh_table.png" title="DH parameters of UR16e" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/ur16e_fk_ik.png" title="Consistency check between FK/IK and toolbox results" class="img-fluid rounded z-depth-1" %}
+  </div>
 </div>
 
 ---
 
-### 🧩 Key Components
+## 2. Collision Detection via Capsule Approximation
 
-- **Dynamic modeling:** Derived equations of motion from the URDF model and verified inertia parameters.  
-- **Controller design:** Combined feedforward inverse dynamics and feedback torque regulation.  
-- **Trajectory optimization:** Used polynomial interpolation to ensure smooth motion.  
-- **Validation:** Compared PD and model-based controllers, showing significant improvement in tracking stability.
+- **Link Modeling:** Each link is approximated as a **capsule** (cylinder with hemispherical ends), while obstacles are enclosed by **bounding spheres**.  
+- **Environment Collision:** Reduced to computing the **minimum point–segment distance** versus the sum of radii.  
+- **Self-Collision:** Converted to **segment–segment distance** checks between link pairs. Four relative cases are defined for robust detection.  
+- During motion planning, the detector is called online rather than pre-computing the entire free space.
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/capsule_model.png" title="Capsule-based link and spherical obstacle approximation" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/segment_distance.png" title="Geometry of point-/segment-distance computation" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
 
 ---
+
+## 3. Path Planning and Smoothing
+
+- **Task Scenario:** pick–place and palletizing operations in a flexible manufacturing cell.  
+- **RRT:** Implemented in the **joint space**, adopting a **goal-biasing strategy** for faster convergence.  
+- **B-Spline Smoothing:** Applied **cubic B-spline interpolation** (de Boor–Cox recursion and matrix form) to smooth RRT piecewise paths.
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/rrt_tree.png" title="RRT expansion in joint space" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/bspline_smoothing.png" title="B-spline-smoothed end-effector trajectory" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+---
+
+## 4. Time-Optimal Trajectory Generation
+
+Under joint **velocity**, **acceleration**, and **torque limits**, the trajectory timing is optimized to minimize total execution time:
+\[
+\min \sum_k \Delta t_k
+\]
+A nonlinear time-scaling and re-parameterization ensure that all kinematic and dynamic constraints are satisfied.
+
+---
+
+## 5. Control Design and Robustness Evaluation
+
+- **Computed-Torque Control (CTC):**
+  \[
+  \tau = M(q)(\ddot q_d + K_p e + K_d \dot e) + C(q,\dot q)\dot q + G(q)
+  \]
+  achieving accurate tracking of the reference trajectory.  
+- **Robust Control:** Added compensation for model uncertainties; stability guaranteed by Lyapunov conditions on \(P,Q\).  
+- **Disturbance Tests:** Injected **joint measurement noise**, **torque noise**, and parameter perturbations in \(M(q)\) and \(G(q)\) to evaluate tracking stability.
+
+<div class="row">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/ctc_block.png" title="Computed-torque control structure" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/robust_block.png" title="Robust control framework and simulation" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+---
+
+## 6. System-Level Simulation (URDF → Simulink)
+
+- Defined coordinate frames via MDH/DH and exported **URDF** from SolidWorks.  
+- Imported into **Simulink** using `smimport`, built the system diagram, and simulated the collision-free trajectory animation.
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/ur16e_torque_plot.png" title="Torque control results" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/ur16e_real_robot.png" title="UR16e hardware setup" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
-<div class="caption">
-    Left: Torque control output vs. reference; Right: UR16e experimental platform in the lab.
+  <div class="col-sm-10 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/smimport_sim.png" title="URDF-to-Simulink system simulation" class="img-fluid rounded z-depth-1" %}
+  </div>
 </div>
 
 ---
 
-**Technologies Used:**  
-Python · ROS · Gazebo · NumPy · Matplotlib · URSim
+### Tools  
+MATLAB / Simulink · Robotics System Toolbox · Custom geometric collision module (capsule–sphere) · RRT + B-spline · SolidWorks → URDF
 
-**Results:**  
-Achieved precise joint-space tracking under variable payloads; developed extensible control scripts for future reinforcement learning integration.
-
-[📂 GitHub Repository →](https://github.com/yourusername/ur16e-control)  
-[📄 Project Report (PDF)](assets/pdf/ur16e_report.pdf)
+### Files  
+- Report PDF: `assets/pdf/ur16e_report.pdf`  
+- Code/Simulation: [GitHub Repository →](https://github.com/yourusername/ur16e-control)
