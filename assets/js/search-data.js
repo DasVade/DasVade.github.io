@@ -66,9 +66,9 @@ ninja.data = [{
           description: "Implementation of iLQR and DDP algorithms for nonlinear trajectory optimization.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
-            },},{id: "projects-ur16e-manipulator-control",
-          title: 'UR16e Manipulator Control',
-          description: "Model-based torque control and real-time trajectory optimization",
+            },},{id: "projects-ur16e-industrial-robot-modeling-planning-and-control",
+          title: 'UR16e Industrial Robot — Modeling, Planning, and Control',
+          description: "Kinematics, dynamics, collision detection, RRT+B-spline planning, time-optimal trajectory generation, and computed-torque/robust control with Simulink-URDF simulation.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
             },},{
