@@ -1,6 +1,6 @@
 ---
 layout: about
-title: Home
+title: about
 permalink: /
 subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a>. Senior in MEAM Department.
 profile:
@@ -26,7 +26,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-## about
+## about me
 
 I am a senior in Mechanical Engineering and Applied Mechanics (MEAM) at the University of Pennsylvania.  
 
