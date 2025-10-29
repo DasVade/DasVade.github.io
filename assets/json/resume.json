@@ -24,7 +24,7 @@
       "institution": "University of Pennsylvania",
       "area": "Mechanical Engineering and Applied Mechanics",
       "studyType": "M.S.E. (3+2 program)",
-      "startDate": "2025-09",
+      "startDate": "2025-08",
       "endDate": "",
       "courses": []
     },
@@ -32,7 +32,7 @@
       "institution": "Shanghai Jiao Tong University",
       "area": "Mechanical Engineering",
       "studyType": "B.S.",
-      "startDate": "2022-09",
+      "startDate": "2022-08",
       "endDate": ""
     }
   ],
@@ -40,8 +40,8 @@
     {
       "name": "Optimal Control for Nonlinear Systems",
       "entity": "University of Pennsylvania",
-      "startDate": "2025-09",
-      "endDate": "2025-11",
+      "startDate": "2025-08",
+      "endDate": "2025-10",
       "url": "",
       "description": "Implemented LQR and MPC for nonlinear dynamical systems; built a trajectory-optimization pipeline and evaluated controller performance in simulation; generated quantitative visualizations of state and control profiles.",
       "highlights": [
@@ -53,8 +53,8 @@
     {
       "name": "UR16e Manipulator Simulation",
       "entity": "Shanghai Jiao Tong University",
-      "startDate": "2025-04",
-      "endDate": "2025-07",
+      "startDate": "2025-03",
+      "endDate": "2025-06",
       "url": "",
       "description": "Modeled a 6-DOF UR16e arm (modified DH), derived dynamics for torque-based control and motion planning, and validated controllers in MATLAB/Simulink.",
       "highlights": [
@@ -73,7 +73,7 @@
     },
     {
       "title": "Outstanding Course Project Award",
-      "date": "2025",
+      "date": "2024",
       "awarder": "SJTU — ME3220: Design and Manufacture II",
       "summary": ""
     }
@@ -102,6 +102,7 @@
   ],
   "interests": [
     { "name": "Learning-based physics simulation" },
+    { "name": "Flow matching and Diffusion models" },
     { "name": "Optimal and learning-based control & planning" }
   ]
 }
