@@ -3,8 +3,6 @@ layout: about
 title: about
 permalink: /
 subtitle: <a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a>. Senior in MEAM Department.
-
-subtitle: 
 profile:
   align: right
   image: me.jpg
