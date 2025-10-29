@@ -36,19 +36,4 @@ Earlier, during my studies at Shanghai Jiao Tong University, I developed robotic
 My research interests lie at the intersection of robotics, control, and machine learning, emphasizing dynamic modeling, optimal control, and physics-informed neural simulation.
 
 
----
-
-## projects
-{% include projects.liquid limit=3 %}
-[See all projects →](/projects)
-
----
-
-## awards
-
-- Exchange Scholarship (Tuition Waived)  
-  *SJTU–Penn 3+1+1 Joint Program*, 2025  
-  
-- Outstanding Course Project Award  
-  *SJTU ME3220: Design and Manufacture II*, 2024
   
