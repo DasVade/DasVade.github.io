@@ -15,9 +15,9 @@ The system is validated by importing the **SolidWorks assembly into MATLAB/Simul
 
 ## 1. Kinematic and Dynamic Modeling
 
-- **Forward Kinematics (FK):** Established using **DH parameters** for a 6-DOF joint chain; results verified with MATLAB’s Robotics Toolbox.  
-- **Inverse Kinematics (IK):** Applied the **Newton–Raphson iterative method** (after testing the spherical-wrist approximation) to solve joint angles; consistent with toolbox results.  
-- **Inverse Dynamics (ID):** Implemented the **Newton–Euler recursive algorithm** from end-effector to base to compute joint torques.  
+- **Forward Kinematics (FK):** Established using **DH parameters** for a 6-DOF joint chain; results verified with MATLAB’s Robotics Toolbox.
+- **Inverse Kinematics (IK):** Applied the **Newton–Raphson iterative method** (after testing the spherical-wrist approximation) to solve joint angles; consistent with toolbox results.
+- **Inverse Dynamics (ID):** Implemented the **Newton–Euler recursive algorithm** from end-effector to base to compute joint torques.
 - **Forward Dynamics (FD):** Derived \(M(q)\), \(C(q,\dot q)\), and \(G(q)\) via the Lagrangian formulation:
   \[
   M(q)\ddot q + C(q,\dot q)\dot q + G(q) = \tau
@@ -37,9 +37,9 @@ The system is validated by importing the **SolidWorks assembly into MATLAB/Simul
 
 ## 2. Collision Detection via Capsule Approximation
 
-- **Link Modeling:** Each link is approximated as a **capsule** (cylinder with hemispherical ends), while obstacles are enclosed by **bounding spheres**.  
-- **Environment Collision:** Reduced to computing the **minimum point–segment distance** versus the sum of radii.  
-- **Self-Collision:** Converted to **segment–segment distance** checks between link pairs. Four relative cases are defined for robust detection.  
+- **Link Modeling:** Each link is approximated as a **capsule** (cylinder with hemispherical ends), while obstacles are enclosed by **bounding spheres**.
+- **Environment Collision:** Reduced to computing the **minimum point–segment distance** versus the sum of radii.
+- **Self-Collision:** Converted to **segment–segment distance** checks between link pairs. Four relative cases are defined for robust detection.
 - During motion planning, the detector is called online rather than pre-computing the entire free space.
 
 <div class="row">
@@ -55,8 +55,8 @@ The system is validated by importing the **SolidWorks assembly into MATLAB/Simul
 
 ## 3. Path Planning and Smoothing
 
-- **Task Scenario:** pick–place and palletizing operations in a flexible manufacturing cell.  
-- **RRT:** Implemented in the **joint space**, adopting a **goal-biasing strategy** for faster convergence.  
+- **Task Scenario:** pick–place and palletizing operations in a flexible manufacturing cell.
+- **RRT:** Implemented in the **joint space**, adopting a **goal-biasing strategy** for faster convergence.
 - **B-Spline Smoothing:** Applied **cubic B-spline interpolation** (de Boor–Cox recursion and matrix form) to smooth RRT piecewise paths.
 
 <div class="row">
@@ -86,8 +86,8 @@ A nonlinear time-scaling and re-parameterization ensure that all kinematic and d
   \[
   \tau = M(q)(\ddot q_d + K_p e + K_d \dot e) + C(q,\dot q)\dot q + G(q)
   \]
-  achieving accurate tracking of the reference trajectory.  
-- **Robust Control:** Added compensation for model uncertainties; stability guaranteed by Lyapunov conditions on \(P,Q\).  
+  achieving accurate tracking of the reference trajectory.
+- **Robust Control:** Added compensation for model uncertainties; stability guaranteed by Lyapunov conditions on \(P,Q\).
 - **Disturbance Tests:** Injected **joint measurement noise**, **torque noise**, and parameter perturbations in \(M(q)\) and \(G(q)\) to evaluate tracking stability.
 
 <div class="row">
@@ -103,7 +103,7 @@ A nonlinear time-scaling and re-parameterization ensure that all kinematic and d
 
 ## 6. System-Level Simulation (URDF → Simulink)
 
-- Defined coordinate frames via MDH/DH and exported **URDF** from SolidWorks.  
+- Defined coordinate frames via MDH/DH and exported **URDF** from SolidWorks.
 - Imported into **Simulink** using `smimport`, built the system diagram, and simulated the collision-free trajectory animation.
 
 <div class="row justify-content-sm-center">
@@ -114,9 +114,11 @@ A nonlinear time-scaling and re-parameterization ensure that all kinematic and d
 
 ---
 
-### Tools  
+### Tools
+
 MATLAB / Simulink · Robotics System Toolbox · Custom geometric collision module (capsule–sphere) · RRT + B-spline · SolidWorks → URDF
 
-### Files  
-- Report PDF: `assets/pdf/ur16e_report.pdf`  
+### Files
+
+- Report PDF: `assets/pdf/ur16e_report.pdf`
 - Code/Simulation: [GitHub Repository →](https://github.com/yourusername/ur16e-control)

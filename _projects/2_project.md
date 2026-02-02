@@ -27,10 +27,10 @@ This project explored how dynamic programming and second-order expansions can ef
 
 ### 🧩 Problem Setup
 
-- **System models:** unicycle, cart–pole, and double integrator.  
+- **System models:** unicycle, cart–pole, and double integrator.
 - **Objective:** minimize quadratic cost function  
   \[
-  J = \sum_{t=0}^{T} (x_t^T Q x_t + u_t^T R u_t)
+  J = \sum\_{t=0}^{T} (x_t^T Q x_t + u_t^T R u_t)
   \]
 - **Approach:** linearize dynamics along nominal trajectories, use backward Riccati recursion to compute feedback gains.
 
@@ -54,17 +54,17 @@ This project explored how dynamic programming and second-order expansions can ef
 
 ### ⚙️ Key Features
 
-- Implemented iLQR and DDP in **Python (NumPy)** and **MATLAB**.  
-- Verified convergence and control stability across multiple nonlinear systems.  
-- Compared gradient-based optimization with dynamic programming–based methods.  
+- Implemented iLQR and DDP in **Python (NumPy)** and **MATLAB**.
+- Verified convergence and control stability across multiple nonlinear systems.
+- Compared gradient-based optimization with dynamic programming–based methods.
 - Built visualizations for trajectory evolution and value function contours.
 
 ---
 
 ### 🧠 Insights
 
-- The iLQR backward pass improves numerical stability compared to naive gradient descent.  
-- Warm-starting DDP with iLQR solutions reduces iterations by ~40%.  
+- The iLQR backward pass improves numerical stability compared to naive gradient descent.
+- Warm-starting DDP with iLQR solutions reduces iterations by ~40%.
 - Highlighted the trade-off between accuracy and real-time feasibility for embedded control.
 
 ---

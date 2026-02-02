@@ -44,10 +44,7 @@
       "endDate": "2025-10",
       "url": "",
       "description": "Implemented LQR and MPC for nonlinear dynamical systems; built a trajectory-optimization pipeline and evaluated controller performance in simulation; generated quantitative visualizations of state and control profiles.",
-      "highlights": [
-        "Designed modular Python code for fast experimentation",
-        "Compared MPC horizons and cost weightings across tasks"
-      ],
+      "highlights": ["Designed modular Python code for fast experimentation", "Compared MPC horizons and cost weightings across tasks"],
       "keywords": ["LQR", "MPC", "Trajectory Optimization", "Python"]
     },
     {
@@ -57,10 +54,7 @@
       "endDate": "2025-06",
       "url": "",
       "description": "Modeled a 6-DOF UR16e arm (modified DH), derived dynamics for torque-based control and motion planning, and validated controllers in MATLAB/Simulink.",
-      "highlights": [
-        "Built reusable kinematics/dynamics modules",
-        "Benchmarked trajectory planners and tracking accuracy"
-      ],
+      "highlights": ["Built reusable kinematics/dynamics modules", "Benchmarked trajectory planners and tracking accuracy"],
       "keywords": ["Robotics", "Manipulator Dynamics", "MATLAB", "Simulink"]
     }
   ],
@@ -92,12 +86,7 @@
     {
       "name": "Domains",
       "level": "",
-      "keywords": [
-        "Robotics",
-        "Dynamic Modeling",
-        "Optimal Control",
-        "Physics-based Simulation"
-      ]
+      "keywords": ["Robotics", "Dynamic Modeling", "Optimal Control", "Physics-based Simulation"]
     }
   ],
   "interests": [
