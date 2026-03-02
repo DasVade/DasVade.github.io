@@ -1,0 +1,22 @@
+{
+  "publications": [
+    {
+      "title": "Robust Multi-Object Tracking in Unstructured Terrain",
+      "venue": "ICRA 2026 (Under Review)",
+      "authors": "Yixiao Liu, Collaborator A, Collaborator B",
+      "links": {"paper": "#", "code": "#", "bib": "#"}
+    }
+  ],
+  "projects": [
+    {
+      "title": "Perception Stack for Field Robots",
+      "highlights": [
+        "Fuses 2D detection and temporal tracking.",
+        "Improves robustness in outdoor conditions."
+      ]
+    }
+  ],
+  "news": [
+    {"date": "2026-02", "text": "Website refreshed with modular sections."}
+  ]
+}
