@@ -12,8 +12,7 @@
   <header class="site-header">
     <nav class="nav container" aria-label="Primary">
       <a class="brand" href="#hero">Yixiao Liu</a>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -25,47 +24,38 @@
 
   <main>
     <section id="hero" class="hero section container">
-      <div class="hero-grid">
-        <img src="assets/avatar.jpg" alt="Portrait of Yixiao Liu" class="avatar" />
-        <div class="hero-content">
-          <p class="eyebrow">AI · Robotics · Perception</p>
-          <h1>Yixiao Liu</h1>
-          <p class="lead">I design robust perception and 3D scene understanding systems for field robots operating in unstructured environments.</p>
-          <div class="cta-group">
-            <a class="btn primary" href="assets/cv.pdf">CV</a>
-            <a class="btn" href="mailto:yxlewis@seas.upenn.edu">Email</a>
-            <a class="btn" href="https://github.com/DasVade">GitHub</a>
-            <a class="btn" href="#" aria-label="Google Scholar profile (placeholder)">Scholar</a>
-          </div>
-        </div>
+      <img src="assets/avatar.jpg" alt="Portrait of Yixiao Liu" class="avatar" />
+      <p class="eyebrow">AI · Robotics · Perception</p>
+      <h1>Yixiao Liu</h1>
+      <p class="lead">I build robust perception and 3D understanding systems for real-world field robotics.</p>
+      <div class="cta-group">
+        <a class="btn primary" href="assets/cv.pdf">CV</a>
+        <a class="btn" href="mailto:yxlewis@seas.upenn.edu">Email</a>
+        <a class="btn" href="https://github.com/DasVade">GitHub</a>
+        <a class="btn" href="#" aria-label="Google Scholar profile (placeholder)">Scholar</a>
       </div>
     </section>
 
     <section id="about" class="section container">
       <h2>About</h2>
       <div class="card">
-        <p>I am a MEAM 3+2 student at the University of Pennsylvania and a Mechanical Engineering student at Shanghai Jiao Tong University. I am interested in robust AI systems that transfer from controlled settings to real-world robotic platforms.</p>
-        <p>My work focuses on object detection and tracking, geometry-aware 3D reconstruction, and world modeling for long-horizon autonomy. I value methods that are both principled and deployment-ready.</p>
+        <p>I am a MEAM 3+2 student at the University of Pennsylvania and a Mechanical Engineering student at Shanghai Jiao Tong University.</p>
+        <p>My interests include robotic perception, multi-object tracking, and learning-based 3D reconstruction and world models, with emphasis on robustness and deployment.</p>
       </div>
     </section>
 
     <section id="publications" class="section container">
-      <div class="section-head">
-        <h2>Selected Publications</h2>
-        <a href="#" class="text-link">Full list →</a>
-      </div>
+      <h2>Selected Publications</h2>
       <div class="stack">
         <article class="card pub-item">
-          <p class="tag">Tracking</p>
-          <h3>Robust Multi-Object Tracking in Unstructured Terrain</h3>
-          <p class="meta"><strong>Yixiao Liu</strong>, Collaborator A, Collaborator B · ICRA 2026 (Under Review)</p>
-          <p class="link-row"><a href="#">Paper</a><a href="#">Code</a><a href="#">BibTeX</a></p>
+          <h3>Title Placeholder: Robust Multi-Object Tracking in Unstructured Terrain</h3>
+          <p class="meta">Yixiao Liu, Collaborator A, Collaborator B · ICRA 2026 (Under Review)</p>
+          <p>Links: <a href="#">paper</a> · <a href="#">code</a> · <a href="#">bib</a></p>
         </article>
         <article class="card pub-item">
-          <p class="tag">3D Reconstruction</p>
-          <h3>Self-Supervised 3D Reconstruction for Field Robotics</h3>
-          <p class="meta"><strong>Yixiao Liu</strong>, Collaborator C · RSS 2026 (Preprint)</p>
-          <p class="link-row"><a href="#">Paper</a><a href="#">Project</a><a href="#">Video</a></p>
+          <h3>Title Placeholder: Self-Supervised 3D Reconstruction for Field Robotics</h3>
+          <p class="meta">Yixiao Liu, Collaborator C · RSS 2026 (Preprint)</p>
+          <p>Links: <a href="#">paper</a> · <a href="#">project page</a> · <a href="#">video</a></p>
         </article>
       </div>
     </section>
@@ -73,18 +63,18 @@
     <section id="projects" class="section container">
       <h2>Projects</h2>
       <div class="grid-2">
-        <article class="card project-item">
+        <article class="card">
           <h3>Perception Stack for Field Robots</h3>
           <ul>
-            <li>Fuses 2D detector confidence and temporal associations for stable tracking.</li>
-            <li>Improves robustness under occlusion, blur, and illumination shifts.</li>
+            <li>Fuses 2D detection and temporal tracking in dynamic outdoor scenes.</li>
+            <li>Targets robust performance under motion blur and illumination changes.</li>
           </ul>
         </article>
-        <article class="card project-item">
+        <article class="card">
           <h3>Learning-based 3D World Modeling</h3>
           <ul>
-            <li>Builds consistent 3D geometry from sparse and noisy multi-view observations.</li>
-            <li>Targets practical scene understanding for planning and navigation.</li>
+            <li>Builds consistent 3D geometry from sparse and noisy observations.</li>
+            <li>Designed for navigation and long-horizon scene understanding.</li>
           </ul>
         </article>
       </div>
@@ -93,18 +83,18 @@
     <section id="news" class="section container">
       <h2>News</h2>
       <ul class="card timeline">
-        <li><span>2026-02</span> Website refreshed with a cleaner academic layout.</li>
-        <li><span>2026-01</span> Started project on robust tracking for field robotics.</li>
-        <li><span>2025-12</span> Updated CV and research statement.</li>
+        <li><span>2026-02</span> Updated personal website and publication list.</li>
+        <li><span>2026-01</span> Started new project on robust field-robot tracking.</li>
+        <li><span>2025-12</span> Released latest CV and research summary.</li>
       </ul>
     </section>
 
     <section id="contact" class="section container">
       <h2>Contact</h2>
       <div class="card contact-list">
-        <p><strong>Email</strong><br /><a href="mailto:yxlewis@seas.upenn.edu">yxlewis@seas.upenn.edu</a></p>
-        <p><strong>GitHub</strong><br /><a href="https://github.com/DasVade">github.com/DasVade</a></p>
-        <p><strong>Location</strong><br />Philadelphia, PA / Shanghai</p>
+        <p><strong>Email:</strong> <a href="mailto:yxlewis@seas.upenn.edu">yxlewis@seas.upenn.edu</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/DasVade">github.com/DasVade</a></p>
+        <p><strong>Location:</strong> Philadelphia, PA / Shanghai</p>
       </div>
     </section>
   </main>
