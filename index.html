@@ -3,155 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yixiao Liu</title>
-  <meta name="description" content="Yixiao Liu — academic homepage in AI and Robotics." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Yixiao Liu | Academic Homepage</title>
+  <meta name="description" content="Yixiao Liu — AI and Robotics researcher focusing on perception, 3D reconstruction, and tracking." />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <header class="site-header">
     <nav class="nav container" aria-label="Primary">
-      <a class="brand" href="#intro">Yixiao Liu</a>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#education">Education</a></li>
-        <li><a href="#research">Research</a></li>
+      <a class="brand" href="#hero">Yixiao Liu</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#interests">Interests</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="container">
-    <section class="header-container" id="intro">
-      <img src="assets/avatar.jpg" alt="Yixiao Liu" class="avatar" />
-      <div class="name-script">Yixiao Liu</div>
-      <div class="contact">
-        <i class="fas fa-envelope"></i> <a href="mailto:yxlewis@seas.upenn.edu" class="link">yxlewis@seas.upenn.edu</a> |
-        <i class="fas fa-location-dot"></i> Philadelphia, PA |
-        <i class="fab fa-github"></i> <a href="https://github.com/DasVade" class="link">github.com/DasVade</a> |
-        <i class="fas fa-file"></i> <a href="assets/cv.pdf" class="link">cv</a>
-      </div>
-      <div class="quote-minimal">Robotic Perception · Object Detection & Tracking · 3D Vision</div>
-    </section>
-
-    <section class="section" id="education">
-      <h2>Education</h2>
-      <div class="award-line">
-        <div class="award-left">
-          🎓 <span class="highlight">University of Pennsylvania</span>
-          <span class="break-wrap">M.S.E. in Mechanical Engineering and Applied Mechanics (3+2 Program)</span>
-        </div>
-        <div class="award-right">Aug. 2025 – Present</div>
-      </div>
-      <div class="misc-item">• Exchange Scholarship (Tuition Waived)</div>
-
-      <div class="award-line">
-        <div class="award-left">
-          🎓 <span class="highlight">Shanghai Jiao Tong University</span>
-          <span class="break-wrap">B.S. in Mechanical Engineering</span>
-        </div>
-        <div class="award-right">Aug. 2022 – Present</div>
+  <main>
+    <section id="hero" class="hero section container">
+      <img src="assets/avatar.jpg" alt="Portrait of Yixiao Liu" class="avatar" />
+      <p class="eyebrow">AI · Robotics · Perception</p>
+      <h1>Yixiao Liu</h1>
+      <p class="lead">I build robust perception and 3D understanding systems for real-world field robotics.</p>
+      <div class="cta-group">
+        <a class="btn primary" href="assets/cv.pdf">CV</a>
+        <a class="btn" href="mailto:yxlewis@seas.upenn.edu">Email</a>
+        <a class="btn" href="https://github.com/DasVade">GitHub</a>
+        <a class="btn" href="#" aria-label="Google Scholar profile (placeholder)">Scholar</a>
       </div>
     </section>
 
-    <section class="section" id="research">
-      <h2>Research Experience</h2>
-
-      <article class="publication">
-        <div class="publication-info">
-          <div class="publication-title">Research in World Models and 3D Reconstruction</div>
-          <div class="publication-meta">Advised by Jiatao Gu, University of Pennsylvania · 2026 – Present</div>
-          <ul>
-            <li>Conducted research on learning-based world models for robotic perception, focusing on structured 3D scene representation and reconstruction from visual observations.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="publication">
-        <div class="publication-info">
-          <div class="publication-title">Fruit Detection, Tracking and Counting</div>
-          <div class="publication-meta">Advised by Chenggang Yuan, Shanghai Jiao Tong University · 2025 – Present</div>
-          <ul>
-            <li>Analyzed detection–tracking pipelines for agricultural robotics by comparing YOLO-based detectors with SORT-family trackers.</li>
-            <li>Designed a lightweight detection–tracking–counting framework to improve robustness under occlusion and viewpoint changes.</li>
-            <li>Investigating detector compression and tracker simplification for embedded real-time deployment.</li>
-          </ul>
-        </div>
-      </article>
+    <section id="about" class="section container">
+      <h2>About</h2>
+      <div class="card">
+        <p>I am a MEAM 3+2 student at the University of Pennsylvania and a Mechanical Engineering student at Shanghai Jiao Tong University.</p>
+        <p>My interests include robotic perception, multi-object tracking, and learning-based 3D reconstruction and world models, with emphasis on robustness and deployment.</p>
+      </div>
     </section>
 
-    <section class="section" id="projects">
+    <section id="publications" class="section container">
+      <h2>Selected Publications</h2>
+      <div class="stack">
+        <article class="card pub-item">
+          <h3>Title Placeholder: Robust Multi-Object Tracking in Unstructured Terrain</h3>
+          <p class="meta">Yixiao Liu, Collaborator A, Collaborator B · ICRA 2026 (Under Review)</p>
+          <p>Links: <a href="#">paper</a> · <a href="#">code</a> · <a href="#">bib</a></p>
+        </article>
+        <article class="card pub-item">
+          <h3>Title Placeholder: Self-Supervised 3D Reconstruction for Field Robotics</h3>
+          <p class="meta">Yixiao Liu, Collaborator C · RSS 2026 (Preprint)</p>
+          <p>Links: <a href="#">paper</a> · <a href="#">project page</a> · <a href="#">video</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section container">
       <h2>Projects</h2>
-
-      <article class="publication">
-        <div class="publication-info">
-          <div class="publication-title">MEAM 5100: Robotics and Autonomous Systems Project (ROBA)</div>
-          <div class="publication-meta">University of Pennsylvania · Fall 2025</div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Perception Stack for Field Robots</h3>
           <ul>
-            <li>Designed and implemented a robotic system for the MEAM 5100 ROBA competition.</li>
-            <li>Achieved <strong>3rd team place out of 113 students</strong> in ROBA competition.</li>
-            <li>Integrated perception, planning, and control modules under real-time constraints.</li>
+            <li>Fuses 2D detection and temporal tracking in dynamic outdoor scenes.</li>
+            <li>Targets robust performance under motion blur and illumination changes.</li>
           </ul>
-        </div>
-      </article>
-
-      <article class="publication">
-        <div class="publication-info">
-          <div class="publication-title">Optimal Control for Nonlinear Dynamical Systems</div>
-          <div class="publication-meta">University of Pennsylvania · Fall 2025</div>
+        </article>
+        <article class="card">
+          <h3>Learning-based 3D World Modeling</h3>
           <ul>
-            <li>Implemented LQR and MPC controllers for nonlinear systems in simulation.</li>
-            <li>Built trajectory optimization pipeline and analyzed performance trade-offs.</li>
-            <li>Compared different horizons and cost weightings with quantitative visualization.</li>
+            <li>Builds consistent 3D geometry from sparse and noisy observations.</li>
+            <li>Designed for navigation and long-horizon scene understanding.</li>
           </ul>
-        </div>
-      </article>
-
-      <article class="publication">
-        <div class="publication-info">
-          <div class="publication-title">UR16e Manipulator Modeling and Simulation</div>
-          <div class="publication-meta">Shanghai Jiao Tong University · Spring 2025</div>
-          <ul>
-            <li>Modeled kinematics and dynamics of a 6-DOF UR16e manipulator using modified DH parameters.</li>
-            <li>Validated torque-based control and motion planning in MATLAB/Simulink.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="publication">
-        <div class="publication-info">
-          <div class="publication-title">Upper-Limb Rehabilitation Robot Design</div>
-          <div class="publication-meta">Shanghai Jiao Tong University · Fall 2024</div>
-          <ul>
-            <li>Designed a rehabilitation robot system including mechanical structure, actuation, and control logic.</li>
-            <li>Implemented motion control and safety constraints; completed full system integration and testing.</li>
-            <li>Received Outstanding Course Project Award for system design and integration quality.</li>
-          </ul>
-        </div>
-      </article>
+        </article>
+      </div>
     </section>
 
-    <section class="section" id="skills">
-      <h2>Technical Skills</h2>
-      <div class="misc-item"><span class="highlight">Programming:</span> Python, MATLAB, C++, Git</div>
-      <div class="misc-item"><span class="highlight">Robotics & Control:</span> LQR, MPC, Dynamic Modeling, Simulation</div>
-      <div class="misc-item"><span class="highlight">Vision & ML:</span> Object Detection (YOLO), Multi-Object Tracking, PyTorch (basic)</div>
+    <section id="news" class="section container">
+      <h2>News</h2>
+      <ul class="card timeline">
+        <li><span>2026-02</span> Updated personal website and publication list.</li>
+        <li><span>2026-01</span> Started new project on robust field-robot tracking.</li>
+        <li><span>2025-12</span> Released latest CV and research summary.</li>
+      </ul>
     </section>
 
-    <section class="section" id="interests">
-      <h2>Research Interests</h2>
-      <p>Robotic Perception; Object Detection and Tracking; 3D Vision; Learning-based Control.</p>
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <div class="card contact-list">
+        <p><strong>Email:</strong> <a href="mailto:yxlewis@seas.upenn.edu">yxlewis@seas.upenn.edu</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/DasVade">github.com/DasVade</a></p>
+        <p><strong>Location:</strong> Philadelphia, PA / Shanghai</p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    © <span id="year"></span> Yixiao Liu · Hosted by GitHub Pages.
+    <div class="container">
+      <p>© <span id="year"></span> Yixiao Liu · Hosted on GitHub Pages</p>
+    </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
