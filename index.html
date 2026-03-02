@@ -4,141 +4,113 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yixiao Liu</title>
-
-  <!-- favicon -->
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 2.5rem 1.25rem;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #222;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin: 0.5rem 0 0.25rem;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 1.25rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 0.25rem;
-      margin-top: 2rem;
-    }
-
-    .header {
-      text-align: center;
-      background-color: #eef3fb;
-      padding: 2rem 1.25rem;
-      border-radius: 0.75rem;
-    }
-
-    .avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #ccc;
-    }
-
-    .tagline {
-      font-style: italic;
-      color: #555;
-      margin-top: 0.5rem;
-    }
-
-    .links {
-      margin-top: 0.75rem;
-      font-size: 0.95rem;
-    }
-
-    .links a {
-      color: #555;
-      text-decoration: none;
-      margin: 0 0.4rem;
-    }
-
-    .links a:hover {
-      color: #e74c3c;
-    }
-
-    .card {
-      background: #fff;
-      padding: 1rem;
-      margin-top: 1rem;
-      border-left: 4px solid #2a4d9b;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      border-radius: 0.25rem;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #999;
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 1.25rem;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
-      .avatar {
-        width: 72px;
-        height: 72px;
-      }
-    }
-  </style>
+  <meta name="description" content="Yixiao Liu - academic homepage in AI and robotics." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
 <body>
+  <main class="page">
+    <header class="header-container" id="hero">
+      <img src="assets/avatar.jpg" alt="Yixiao Liu" class="avatar" />
+      <div class="name-row">
+        <h1>Yixiao Liu</h1>
+      </div>
+      <p class="meta-info">M.S.E. Student, University of Pennsylvania · Robotics &amp; AI</p>
+      <p class="contact">
+        <i class="fas fa-map-marker-alt"></i> Philadelphia, PA |
+        <i class="fas fa-envelope"></i> <a href="mailto:yxlewis@seas.upenn.edu">Email</a> |
+        <i class="fab fa-github"></i> <a href="https://github.com/DasVade">GitHub</a> |
+        <i class="fas fa-file"></i> <a href="assets/cv.pdf">CV</a> |
+        <i class="fas fa-graduation-cap"></i> <a href="#publications">Scholar</a>
+      </p>
+      <p class="quote-minimal">Researching robust robotic perception, tracking, and 3D scene understanding.</p>
+    </header>
 
-  <div class="header">
-    <img src="assets/avatar.jpg" alt="Yixiao Liu" class="avatar" />
-    <h1>Yixiao Liu</h1>
+    <section class="section" id="about">
+      <h2>Introduction</h2>
+      <p>
+        I am currently an M.S.E. student in Mechanical Engineering and Applied Mechanics at the University of Pennsylvania.
+        My research interests lie in robotic perception, object detection and tracking, and learning-based 3D reconstruction.
+        I am broadly interested in building practical AI systems for robotics under real-world constraints.
+      </p>
+    </section>
 
-    <div class="tagline">
-      Robotic Perception · 3D Reconstruction · Tracking for Field Robotics
-    </div>
+    <section class="section" id="education">
+      <h2>Education</h2>
+      <div class="award-line">
+        <div class="award-left">🎓 <span class="highlight">M.S.E. in Mechanical Engineering and Applied Mechanics</span><span class="break-wrap">@ University of Pennsylvania</span></div>
+        <div class="award-right">Aug 2025 – Present</div>
+      </div>
+      <div class="award-line">
+        <div class="award-left">🎓 <span class="highlight">B.S. in Mechanical Engineering</span><span class="break-wrap">@ Shanghai Jiao Tong University</span></div>
+        <div class="award-right">Aug 2022 – Present</div>
+      </div>
+    </section>
 
-    <div class="links">
-      <i class="fas fa-envelope"></i>
-      <a href="mailto:yxlewis@seas.upenn.edu">email</a> |
-      <i class="fab fa-github"></i>
-      <a href="https://github.com/DasVade">github</a> |
-      <i class="fas fa-file"></i>
-      <a href="assets/cv.pdf">cv</a>
-    </div>
-  </div>
+    <section class="section" id="publications">
+      <h2>Selected Publications</h2>
+      <article class="publication">
+        <div class="publication-info">
+          <div class="publication-title">Learning World Models for Robotic 3D Scene Reconstruction (Placeholder)</div>
+          <div class="publication-meta">Preprint — Yixiao Liu, Advisor Name</div>
+          <p class="publication-abstract">A study on structured world representations for long-horizon perception and reconstruction in robotics.</p>
+          <div class="publication-links">[<a href="#">paper</a>] [<a href="#">code</a>] [<a href="#">project</a>]</div>
+        </div>
+      </article>
+      <article class="publication">
+        <div class="publication-info">
+          <div class="publication-title">Detection-Tracking-Counting Framework for Agricultural Robotics (Placeholder)</div>
+          <div class="publication-meta">In Preparation — Yixiao Liu, Chenggang Yuan</div>
+          <p class="publication-abstract">A lightweight pipeline integrating detector compression and tracker simplification for embedded deployment.</p>
+          <div class="publication-links">[<a href="#">paper</a>] [<a href="#">code</a>]</div>
+        </div>
+      </article>
+    </section>
 
-  <h2>About</h2>
-  <div class="card">
-    <p>
-      I am a MEAM 3+2 student at the University of Pennsylvania and a Mechanical
-      Engineering student at Shanghai Jiao Tong University.
-    </p>
-    <p>
-      My research interests lie in robotic perception, including object detection,
-      multi-object tracking, and learning-based 3D reconstruction and world models,
-      with a focus on robustness and real-world deployment.
-    </p>
-  </div>
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <div class="item">
+        <div class="item-content">
+          <div class="bold">MEAM 5100 ROBA Competition Project</div>
+          <ul>
+            <li>Designed and implemented an integrated perception-planning-control pipeline for a competitive robotic task.</li>
+            <li>Achieved 3rd team place out of 113 students.</li>
+          </ul>
+        </div>
+        <div class="date-tag">2025</div>
+      </div>
+      <div class="item">
+        <div class="item-content">
+          <div class="bold">Optimal Control for Nonlinear Dynamical Systems</div>
+          <ul>
+            <li>Implemented LQR and MPC controllers and benchmarked stability/performance trade-offs.</li>
+            <li>Built simulation pipeline for trajectory optimization and comparative analysis.</li>
+          </ul>
+        </div>
+        <div class="date-tag">2025</div>
+      </div>
+    </section>
 
-  <footer>
-    © 2026 Yixiao Liu · Hosted on GitHub Pages
-  </footer>
+    <section class="section" id="news">
+      <h2>News</h2>
+      <div class="misc-item">[2026-01] Started research on world models and 3D reconstruction at UPenn.</div>
+      <div class="misc-item">[2025-11] Continued fruit detection/tracking research for field robotics scenarios.</div>
+      <div class="misc-item">[2025-09] Joined M.S.E. program at University of Pennsylvania.</div>
+    </section>
 
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p class="misc-item">📬 <span class="highlight">Email:</span> <a href="mailto:yxlewis@seas.upenn.edu">yxlewis@seas.upenn.edu</a></p>
+      <p class="misc-item">🌐 <span class="highlight">GitHub:</span> <a href="https://github.com/DasVade">github.com/DasVade</a></p>
+      <p class="misc-item">📍 <span class="highlight">Location:</span> Philadelphia, PA, USA</p>
+    </section>
+
+    <footer>© <span id="year"></span> Yixiao Liu. Hosted by GitHub Pages.</footer>
+  </main>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
