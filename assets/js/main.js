@@ -1,6 +1,4 @@
 (function () {
-  const year = document.getElementById('year');
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 })();
