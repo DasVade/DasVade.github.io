@@ -1,10 +1,6 @@
 {
   "publications": [
     {
-      "title": "Robust Multi-Object Tracking in Unstructured Terrain",
-      "venue": "ICRA 2026 (Under Review)",
-      "authors": "Yixiao Liu, Collaborator A, Collaborator B",
-      "links": {"paper": "#", "code": "#", "bib": "#"}
     }
   ],
   "projects": [
