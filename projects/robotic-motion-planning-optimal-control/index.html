@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
   <link rel="stylesheet" href="../../assets/css/optimal-control.css" />
-  <script src="../../assets/js/optimal-control.js" defer></script>
+  <script src="../../assets/js/optimal-control.js?v=20261023-demos" defer></script>
 </head>
 <body>
   <main class="page optimal-control-page">
@@ -109,6 +109,26 @@
           <p>Row-scaled equality constraints and a nullspace least-squares solve avoid explicitly forming a squared-condition-number monomial Hessian. Per coordinate, the equality matrix has rank 20 over 56 coefficients. The snap operator has a 16-dimensional piecewise-cubic kernel; restricting the constraints to that kernel rules out a feasible zero-snap path for these waypoint timings. No endpoint conditions were added to force a nonzero objective.</p>
           <p>Independent adaptive integration gives 210.6953642383607 for the 4 s path. Maximum waypoint residual is 1.12 × 10<sup>−14</sup> m; the largest derivative-continuity residual is 6.91 × 10<sup>−11</sup> in its corresponding derivative units. Peaks in the figure are sampled, not certified continuous extrema. This is path planning; thrust, tilt and obstacle feasibility are not imposed.</p>
         </div>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="secondary-heading">
+      <h2 id="secondary-heading">Additional saved demonstrations</h2>
+      <h3>Cart-pole: energy shaping to LQR</h3>
+      <p>This 20 s nonlinear simulation starts 30° from downward rest. Energy shaping raises the pole, then switches once to local LQR at 2.79 s. The saved trajectory settles at 9.84 s: cart position and wrapped upright angle stay within 0.05 m and 0.05 rad, and both speeds within 0.1 in SI units, through the remaining run. The cart reaches 4.06 m from the origin, exceeding the ±2 m reference bound during the transient; this does not demonstrate rail-constrained control or global convergence.</p>
+      <figure class="project-figure demo-figure">
+        <img src="../../assets/projects/optimal-control/cartpole_hybrid-poster.png" data-poster="../../assets/projects/optimal-control/cartpole_hybrid-poster.png" data-animation="../../assets/projects/optimal-control/cartpole_hybrid.gif" data-description="Playing the saved 20-second cart-pole simulation." width="600" height="450" loading="lazy" alt="Cart-pole swing-up with energy shaping, followed by upright LQR stabilization; lower panel shows wrapped upright angle error." />
+        <div class="demo-controls"><button type="button" hidden aria-pressed="false">Play animation</button><span role="status">Static starting frame.</span></div>
+        <figcaption>Saved nonlinear cart-pole trajectory. Downward-zero pole angle; 1 m pole. The full transient and settling interval are shown at original simulation speed.</figcaption>
+      </figure>
+      <h3>Minimum-snap: same geometry, different timing</h3>
+      <figure class="project-figure demo-figure">
+        <img src="../../assets/projects/optimal-control/minimum_snap_duration-poster.png" data-poster="../../assets/projects/optimal-control/minimum_snap_duration-poster.png" data-animation="../../assets/projects/optimal-control/minimum_snap_duration.gif" data-description="Playing the saved plans on the same 8-second clock." width="600" height="360" loading="lazy" alt="Two planned point motions traverse the same waypoints in 4 and 8 seconds; the faster marker waits at the endpoint after 4 seconds." />
+        <div class="demo-controls"><button type="button" hidden aria-pressed="false">Play animation</button><span role="status">Static starting frame.</span></div>
+        <figcaption>Planned motion on one physical clock; the 4 s plan waits after completion. No quadrotor dynamics, thrust bounds, or collision constraints are simulated. The 128× squared-snap reduction is a planning result.</figcaption>
+      </figure>
+      <details><summary>Optional modules: unicycle and iLQR</summary>
+        <div class="detail-content"><p>Unicycle flatness and iLQR remain secondary coursework modules. Their saved studies are separate tasks and are not evidence of quadrotor hover performance. iLQR optimization and endpoint checks have task-specific limitations; no additional successful maneuver is claimed here. The page prioritizes the verified hover, cart-pole and waypoint examples above.</p></div>
       </details>
     </section>
 
