@@ -1,0 +1,5 @@
+.optimal-control-page video { display: block; width: 100%; height: auto; background: #fff; border-radius: .25rem; }
+.optimal-control-page .robot-demo { max-width: 720px; margin-left: auto; margin-right: auto; }
+.optimal-control-page .project-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+.optimal-control-page .project-links a { color: #2a4d9b; text-decoration: underline; text-underline-offset: .2em; }
+.optimal-control-page .equation { overflow-wrap: anywhere; font-family: ui-monospace, monospace; font-size: .9rem; }
