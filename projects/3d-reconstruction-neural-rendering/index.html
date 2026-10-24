@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Reconstruction and Neural Rendering | Yixiao Liu</title>
+  <meta name="description" content="Calibrated stereo reconstruction, audited NeRF evaluation and controlled positional-encoding experiments from Penn CIS 5800 coursework." />
+  <link rel="canonical" href="https://yixiaoliu.me/projects/3d-reconstruction-neural-rendering/" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/optimal-control.css" />
+  <script src="../../assets/js/optimal-control.js?v=20261023-demos" defer></script>
+</head>
+<body>
+<main class="page optimal-control-page">
+  <p class="project-back"><a href="../../">← Yixiao Liu</a></p>
+  <header class="header-container">
+    <p class="project-eyebrow">Computer vision · Penn CIS 5800 coursework extension</p>
+    <h1>3D Reconstruction and Neural Rendering</h1>
+    <p class="project-intro">Recover scene geometry from calibrated stereo, then evaluate a neural radiance field on independent views of a static scene.</p>
+    <ul class="technology-list" aria-label="Technologies"><li>Python</li><li>NumPy</li><li>SciPy</li><li>PyTorch</li></ul>
+  </header>
+  <section class="section" aria-labelledby="nerf-heading">
+    <h2 id="nerf-heading">NeRF: independent-view evaluation</h2>
+    <div class="item result-note"><p><span class="highlight">24.19 dB PSNR / 0.831 SSIM</span> averaged over six held-out 100×100 test views of one synthetic Lego scene. A separate validation set selected the checkpoint.</p></div>
+    <figure class="project-figure">
+      <a href="../../assets/projects/reconstruction/nerf-test.png"><img src="../../assets/projects/reconstruction/nerf-test.png" width="1440" height="960" alt="Worst and best NeRF test views: target, unenhanced prediction and absolute RGB error for views 101 and 104." /></a>
+      <figcaption>Lowest-scoring view 101: 22.68 dB / 0.777 SSIM. Highest-scoring view 104: 26.96 dB / 0.866 SSIM. Blur and remaining errors are retained; open for full-size labels.</figcaption>
+    </figure>
+    <p>The fresh model uses 32 samples per ray and known camera poses. Camera-convention checks corrected the image-down ray sign; finite-interval rendering and analytic opacity tests make assumptions explicit. This is a course-method reproduction and experimental extension, not a new NeRF algorithm.</p>
+    <details><summary>Training, splits and metric scope</summary><div class="detail-content">
+      <p>90 training views (0–89), five validation views (90/92/94/96/98), six test views (100–105). Seed 5670; 20,000 training steps; 1,024 rays per step; RTX 4070 Ti; approximately 104 s including validation. The test renderer is fixed at 32 samples. Mean PSNR is averaged over per-view dB values. SSIM uses an 11×11 Gaussian window with sigma 1.5 and RGB averaging.</p>
+      <p>The test views are disjoint for this fresh model, but earlier legacy experiments inspected some images. This is a small development evaluation, not an externally untouched benchmark.</p>
+    </div></details>
+  </section>
+  <section class="section" aria-labelledby="stereo-heading">
+    <h2 id="stereo-heading">Calibrated stereo: images to colored geometry</h2>
+    <p>Rectification aligns calibrated image pairs for disparity matching. SSD, SAD and ZNCC are compared at matched resolution and filtering settings; the resulting depth is back-projected and colored from the image.</p>
+    <figure class="project-figure">
+      <a href="../../assets/projects/reconstruction/stereo.png"><img src="../../assets/projects/reconstruction/stereo.png" width="1680" height="544" loading="lazy" alt="TempleRing rectified views 0 and 3, ZNCC filtered depth from 0.5 to 0.6 dataset units, and the corresponding colored 2,818-point cloud." /></a>
+      <figcaption>Middlebury TempleRing views 0/3; ZNCC; scale 0.25; 5×5 patches; depth filter (0.5, 0.6) in dataset units. The depth and 2,818-point cloud share the same filtered result.</figcaption>
+    </figure>
+    <div class="table-scroll" role="region" aria-label="Stereo results; scroll horizontally on small screens" tabindex="0"><table>
+      <caption>Three matched image pairs; mean of per-pair median runtime</caption>
+      <thead><tr><th scope="col">Matcher</th><th scope="col">Seconds/pair</th><th scope="col">LR pass</th><th scope="col">Filtered depth coverage</th></tr></thead>
+      <tbody><tr><th scope="row">SSD</th><td>0.411</td><td>48.8%</td><td>31.1%</td></tr><tr><th scope="row">SAD</th><td>0.414</td><td>48.0%</td><td>30.9%</td></tr><tr><th scope="row">ZNCC</th><td>0.298</td><td>42.8%</td><td>30.6%</td></tr></tbody>
+    </table></div>
+    <p>No local depth ground truth is available. Coverage and left–right consistency are not depth accuracy; the timings do not identify the most accurate matcher.</p>
+  </section>
+  <section class="section" aria-labelledby="encoding-heading">
+    <h2 id="encoding-heading">Controlled positional-encoding comparison</h2>
+    <figure class="project-figure"><a href="../../assets/projects/reconstruction/encoding.png"><img src="../../assets/projects/reconstruction/encoding.png" width="1920" height="576" loading="lazy" alt="Target image and coordinate-MLP fits with positional-encoding frequencies L=0, 2 and 6; increased frequency recovers finer image detail." /></a><figcaption>Fresh 2D fits, one representative seed shown; metrics span three fixed seeds. These are input-image reconstruction results, not held-out generalization.</figcaption></figure>
+    <div class="table-scroll" role="region" aria-label="Positional encoding results" tabindex="0"><table><thead><tr><th scope="col">Frequency</th><th scope="col">PSNR ± sample SD (dB)</th><th scope="col">Mean SSIM</th></tr></thead><tbody><tr><th scope="row">L=0</th><td>20.59 ± 0.25</td><td>0.652</td></tr><tr><th scope="row">L=2</th><td>26.08 ± 0.01</td><td>0.802</td></tr><tr><th scope="row">L=6</th><td>31.97 ± 0.37</td><td>0.908</td></tr></tbody></table></div>
+    <p>Higher frequency preserves more detail in this fit. All runs share the target, 2,000 steps, optimizer, batch size and per-seed minibatch stream; encoding also changes the first-layer parameter count.</p>
+    <details><summary>A separate render-only sampling study</summary><div class="detail-content"><p>With the 32-sample-trained checkpoint frozen, validation PSNR increases from 24.08 dB at 32 render samples to 24.60 at 64 and 24.64 at 128. Mean time rises from 0.024 to 0.039 and 0.079 s/view. This changes inference quadrature only and does not establish an effect of training sample count.</p></div></details>
+  </section>
+  <section class="section" aria-labelledby="sweep-heading">
+    <h2 id="sweep-heading">Historical camera-sweep diagnostic</h2>
+    <figure class="project-figure demo-figure">
+      <img src="../../assets/projects/reconstruction/legacy-sweep-poster.png" data-poster="../../assets/projects/reconstruction/legacy-sweep-poster.png" data-animation="../../assets/projects/reconstruction/legacy-sweep.gif" data-description="Playing the eight-pose legacy diagnostic; includes training poses." width="50" height="50" loading="lazy" alt="Coarse legacy NeRF render across supplied camera poses, including training views; not the final test model or held-out evaluation." style="max-width:200px;margin:auto;image-rendering:pixelated" />
+      <div class="demo-controls"><button type="button" hidden aria-pressed="false">Play animation</button><span role="status">Static starting frame.</span></div>
+      <figcaption>Inspected legacy 50×50 diagnostic using supplied weights and poses 0/15/30/45/60/75/90/105. It includes training poses and is not the 24.19 dB / 0.831 final-model benchmark. Original frames and timing are retained. Motion is opt-in and respects reduced-motion preferences.</figcaption>
+    </figure>
+  </section>
+  <section class="section" aria-labelledby="contributions-heading">
+    <h2 id="contributions-heading">Coursework and implementation contributions</h2>
+    <p>Penn CIS 5800 supplied the tasks, data, calibration, architecture and frameworks. The consolidation preserves a traceable baseline. Extensions include camera/ray audits, the image-y sign correction, finite rendering checks, validation-selected training, explicit independent-view evaluation, reproducible exports and controlled experiments, developed with coding-assistant support. File presence does not establish authorship of every supplied line.</p>
+    <h2>Limitations</h2>
+    <p>One static synthetic NeRF scene, one training seed and 100×100 images limit generalization claims. Thin structures, specular surfaces and edges retain errors. Stereo has holes, outliers and scene-specific filtering; no depth-accuracy claim is supported. Known calibration is assumed. This is neither SLAM nor a dynamic world model, and no hardware deployment is demonstrated.</p>
+  </section>
+  <footer>© <span id="year"></span> Yixiao Liu. Hosted by GitHub Pages.</footer>
+</main>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
