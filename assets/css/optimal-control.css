@@ -1,0 +1,49 @@
+/* Scoped additions: the existing homepage and shared stylesheet are unchanged. */
+.optimal-control-page .project-back { margin: 0 0 1rem; }
+.optimal-control-page .project-back a { color: #2a4d9b; }
+.optimal-control-page .project-eyebrow { margin: 0 0 .6rem; color: #555; font-size: .9rem; }
+.optimal-control-page .project-intro { max-width: 42rem; margin: .9rem auto; }
+.optimal-control-page .technology-list {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+  list-style: none; padding: 0; margin: 1rem 0 0;
+}
+.optimal-control-page .technology-list li {
+  background: #fff; border: 1px solid #c9d3e6; border-radius: .35rem;
+  color: #2a4d9b; padding: .12rem .65rem; margin: 0; font-size: .88rem;
+}
+.optimal-control-page .project-figure { margin: 1.4rem 0; }
+.optimal-control-page .project-figure img { display: block; max-width: 100%; width: 100%; height: auto; background: #fff; }
+.optimal-control-page .demo-figure { max-width: 500px; margin: 1.3rem auto; }
+.optimal-control-page figcaption { color: #555; font-size: .9rem; line-height: 1.55; margin-top: .65rem; }
+.optimal-control-page .project-note { font-size: .9rem; color: #555; }
+.optimal-control-page .demo-controls { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem; margin-top: .65rem; }
+.optimal-control-page button {
+  font: inherit; font-size: .9rem; background: #fff; color: #2a4d9b;
+  border: 1px solid #9aaccc; border-radius: .35rem; padding: .4rem .8rem; cursor: pointer;
+}
+.optimal-control-page button:hover { background: #eef3fb; }
+.optimal-control-page #demo-status { font-size: .85rem; color: #555; }
+.optimal-control-page .result-note { display: block; }
+.optimal-control-page .result-note p { margin: 0; }
+.optimal-control-page .table-scroll { max-width: 100%; overflow-x: auto; border: 1px solid #d9dfe9; border-radius: .3rem; }
+.optimal-control-page table { width: 100%; border-collapse: collapse; background: #fff; font-size: .92rem; }
+.optimal-control-page caption { text-align: left; padding: .7rem .8rem; color: #555; font-size: .9rem; }
+.optimal-control-page th, .optimal-control-page td { text-align: left; padding: .7rem .8rem; border-top: 1px solid #e2e6ec; }
+.optimal-control-page thead { background: #eef3fb; }
+.optimal-control-page td { font-variant-numeric: tabular-nums; }
+.optimal-control-page .representative-row { background: #f3f6fc; }
+.optimal-control-page code { background: #eef1f6; padding: .1em .25em; border-radius: .2rem; overflow-wrap: anywhere; }
+.optimal-control-page details { border: 1px solid #d9dfe9; border-radius: .35rem; background: #fff; margin: 1rem 0; }
+.optimal-control-page summary { cursor: pointer; color: #2a4d9b; padding: .75rem .9rem; font-weight: 600; }
+.optimal-control-page .detail-content { padding: 0 1rem .5rem; font-size: .92rem; }
+.optimal-control-page a:focus-visible, .optimal-control-page button:focus-visible,
+.optimal-control-page summary:focus-visible, .optimal-control-page .table-scroll:focus-visible { outline: 3px solid #2a4d9b; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .optimal-control-page .desktop-break { display: none; }
+  .optimal-control-page table { min-width: 34rem; }
+  .optimal-control-page .header-container { padding: 1.35rem 1rem; }
+  .optimal-control-page .detail-content { padding-right: .8rem; padding-left: .8rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .optimal-control-page *, .optimal-control-page *::before, .optimal-control-page *::after { transition: none !important; scroll-behavior: auto !important; }
+}

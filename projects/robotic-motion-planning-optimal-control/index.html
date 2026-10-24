@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotic Motion Planning and Optimal Control | Yixiao Liu</title>
+  <meta name="description" content="Planar quadrotor hover control with constrained MPC and clipped LQR, plus verified minimum-snap waypoint planning. A Penn MEAM 5170 coursework extension by Yixiao Liu." />
+  <link rel="canonical" href="https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/optimal-control.css" />
+  <script src="../../assets/js/optimal-control.js" defer></script>
+</head>
+<body>
+  <main class="page optimal-control-page">
+    <p class="project-back"><a href="../../">&larr; Yixiao Liu</a></p>
+
+    <header class="header-container">
+      <p class="project-eyebrow">Robotics · Penn MEAM 5170 coursework extension</p>
+      <h1>Robotic Motion Planning<br class="desktop-break" /> and Optimal Control</h1>
+      <p class="project-intro">Recover a planar quadrotor to hover under motor limits, then explore how trajectory duration changes the smoothness of waypoint plans.</p>
+      <ul class="technology-list" aria-label="Technologies">
+        <li>Python</li><li>NumPy</li><li>SciPy</li><li>OSQP</li>
+      </ul>
+    </header>
+
+    <section class="section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">MPC hover recovery in simulation</h2>
+      <figure class="project-figure demo-figure">
+        <img id="hover-demo" src="../../assets/projects/optimal-control/quadrotor-poster.png"
+             data-animation="../../assets/projects/optimal-control/quadrotor.gif"
+             data-poster="../../assets/projects/optimal-control/quadrotor-poster.png"
+             width="500" height="400" fetchpriority="high"
+             alt="Planar quadrotor recovering from an offset position and velocity to a fixed hover target at the origin under MPC N=10." />
+        <div class="demo-controls">
+          <button id="demo-toggle" type="button" aria-controls="hover-demo" aria-pressed="false" hidden>Play animation</button>
+          <span id="demo-status" role="status">Static starting frame.</span>
+        </div>
+        <figcaption>One input-constrained MPC controller (N=10), over 10 simulated seconds. The blue curve is the traveled path toward a fixed hover target. Motor thrust is limited to 0–5.5 N per motor.</figcaption>
+      </figure>
+      <p class="project-note">Reduced-motion preferences are respected. Pausing shows the starting frame; play to view the original animation. <noscript>JavaScript is disabled, so the still frame is shown.</noscript></p>
+    </section>
+
+    <section class="section" aria-labelledby="quadrotor-heading">
+      <h2 id="quadrotor-heading">Two controllers, the same nonlinear plant</h2>
+      <p><strong>Input-constrained linear MPC</strong> plans a finite sequence of motor commands with a hover-linearized model and explicit thrust bounds. It applies the first command and replans at the next control update. <strong>Clipped LQR</strong> uses a continuous-time linear-quadratic feedback gain, then clips its commands to the same motor limits.</p>
+      <p>Both controllers run on the same nonlinear planar quadrotor, with identical initial conditions, integration, actuator limits and evaluation duration. The comparison examines the behavior of these specified configurations.</p>
+
+      <figure class="project-figure">
+        <a href="../../assets/projects/optimal-control/quadrotor-comparison.png" aria-label="Open the full-size quadrotor comparison figure">
+          <img src="../../assets/projects/optimal-control/quadrotor-comparison.png" width="1650" height="990" loading="lazy" decoding="async"
+               alt="Four panels compare clipped LQR and MPC with 4, 9 and 19 predicted input steps: planar paths, position error, pitch angle and squared input deviation relative to hover." />
+        </a>
+        <figcaption>Matched 10-second hover recovery. Short-horizon MPC does not settle in this example. Open the figure for full-size labels.</figcaption>
+      </figure>
+
+      <div class="table-scroll" role="region" aria-label="Quadrotor controller results; scroll horizontally on small screens" tabindex="0">
+        <table>
+          <caption>Results for initial state [0.5, 0.5, 0, 1, 1, 0]</caption>
+          <thead><tr><th scope="col">Controller</th><th scope="col">Position RMSE<br />(m)</th><th scope="col">Full-state settling<br />(s)</th><th scope="col">Control effort<br />relative to hover (N² s)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Clipped LQR</th><td>0.2873</td><td>2.68</td><td>3.8730</td></tr>
+            <tr><th scope="row">MPC N=5</th><td>0.7994</td><td>Not settled</td><td>0.8692</td></tr>
+            <tr class="representative-row"><th scope="row">MPC N=10</th><td>0.3501</td><td>3.26</td><td>2.4021</td></tr>
+            <tr><th scope="row">MPC N=20</th><td>0.3257</td><td>2.62</td><td>2.8863</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="item result-note">
+        <p><span class="highlight">MPC N=10 uses 38.0% less control effort relative to hover, with 21.9% higher position RMSE and slower settling</span> than clipped LQR in this configuration. This is an error–effort tradeoff, not a universal advantage of MPC.</p>
+      </div>
+      <p>Control effort is the time integral of squared <em>applied</em> thrust deviation from nominal hover: <code>∫ ‖u(t) − u<sub>hover</sub>‖² dt</code>, with <code>u<sub>hover</sub> = [4.905, 4.905] N</code>. It counts deviations in either direction and <strong>does not measure physical energy consumption</strong>.</p>
+      <p class="project-note">LQR and MPC use different objective and terminal-cost conventions. The settings below make this a matched-plant comparison, not an isolated test of constraint handling.</p>
+
+      <details>
+        <summary>Controller settings and comparison boundaries</summary>
+        <div class="detail-content">
+          <ul>
+            <li><strong>Plant and rollout:</strong> state [y, z, θ, v<sub>y</sub>, v<sub>z</sub>, ω], initial state [0.5, 0.5, 0, 1, 1, 0]; mass 1 kg; moment arm 0.25 m; inertia 0.0625 kg m²; gravity 9.81 m/s². Nonlinear RK4 integration at 0.005 s; held control updates every 0.02 s; 10 s total; no disturbance in this displayed trial.</li>
+            <li><strong>LQR:</strong> continuous infinite-horizon design with Q = diag(10, 10, 1, 1, 1, 1), R = I₂. No finite terminal cost; the CARE solution supplies the feedback gain. Applied commands are clipped to [0, 5.5] N per motor.</li>
+            <li><strong>MPC:</strong> the same numerical Q and R in an unscaled discrete stage sum, terminal Q, forward-Euler prediction at 0.1 s. N counts states; N=10 has nine input steps and a 0.9 s prediction horizon. Motor bounds are imposed relative to hover.</li>
+            <li><strong>Cost convention:</strong> multiplying the entire MPC objective by 0.1 leaves its optimizer unchanged and gives a rectangle-rule interpretation with terminal matrix 0.1Q, not Q or the CARE value matrix. These are not equivalent objectives.</li>
+            <li><strong>Settling:</strong> all six absolute state errors must stay within [0.02, 0.02, 0.02, 0.05, 0.05, 0.05] in their respective SI units through the end of the finite run. Position RMSE is √mean(y² + z²), including the initial sample.</li>
+            <li><strong>Verification:</strong> metrics were independently recomputed from saved applied-input traces. The unrounded comparison is 37.977996% lower effort and 21.869478% higher position RMSE. Controller settings were not retuned to favor MPC.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="planning-heading">
+      <h2 id="planning-heading">Minimum-snap waypoint planning</h2>
+      <p>Plan piecewise-polynomial paths through five planar waypoints while minimizing the integral of squared snap—the squared fourth derivative of position. The solver enforces waypoint interpolation and continuity through the fourth derivative, with free endpoint derivatives.</p>
+      <figure class="project-figure">
+        <a href="../../assets/projects/optimal-control/minimum-snap.png" aria-label="Open the full-size minimum-snap duration comparison">
+          <img src="../../assets/projects/optimal-control/minimum-snap.png" width="1815" height="577" loading="lazy" decoding="async"
+               alt="Minimum-snap paths for total durations of 2, 4 and 8 seconds overlap geometrically, while longer durations reduce speed and snap." />
+        </a>
+        <figcaption>The same waypoint geometry at three durations. Endpoint velocity, acceleration and jerk are not fixed to zero.</figcaption>
+      </figure>
+      <p><span class="highlight">Doubling total duration from 4 to 8 seconds reduces integrated squared snap by 128×</span>, from 210.6954 to 1.6461. The geometric path is preserved; the objective scales as T<sup>−7</sup>. Independent numerical integration confirms the objective.</p>
+      <details>
+        <summary>Formulation and numerical checks</summary>
+        <div class="detail-content">
+          <p>Four degree-13 polynomial segments use 14 coefficients per coordinate in normalized local time. Waypoints are (−3, −4), (0, 0), (2, 3), (4, 0), (8, −4). Segment durations are uniformly 0.5, 1 or 2 s.</p>
+          <p>Row-scaled equality constraints and a nullspace least-squares solve avoid explicitly forming a squared-condition-number monomial Hessian. Per coordinate, the equality matrix has rank 20 over 56 coefficients. The snap operator has a 16-dimensional piecewise-cubic kernel; restricting the constraints to that kernel rules out a feasible zero-snap path for these waypoint timings. No endpoint conditions were added to force a nonzero objective.</p>
+          <p>Independent adaptive integration gives 210.6953642383607 for the 4 s path. Maximum waypoint residual is 1.12 × 10<sup>−14</sup> m; the largest derivative-continuity residual is 6.91 × 10<sup>−11</sup> in its corresponding derivative units. Peaks in the figure are sampled, not certified continuous extrema. This is path planning; thrust, tilt and obstacle feasibility are not imposed.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="contribution-heading">
+      <h2 id="contribution-heading">Implementation contributions</h2>
+      <ul>
+        <li><strong>Solver implementations:</strong> a portable sparse constrained-MPC QP and a scaled minimum-snap solver for the course formulations.</li>
+        <li><strong>Model and simulation corrections:</strong> fixed the quadrotor integrator’s frozen-state callback; added held-input nonlinear simulation, full-state success checks and commanded/applied-input logging.</li>
+        <li><strong>Numerical checks:</strong> verified hover and linearization, input-bound offsets, QP residuals, polynomial continuity, objective nullspaces and independent integration.</li>
+        <li><strong>Reproducible experiments:</strong> recorded configurations, seeds, solver settings and numerical outputs for horizon, cost-weight, disturbance, mass-mismatch and duration studies.</li>
+      </ul>
+      <p>This project extends <strong>Penn MEAM 5170, Fall 2025</strong> coursework using established control and planning methods. Supplied course frameworks and models remain attributed to the course. Existing coursework included a completed minimum-snap implementation; the scaled solver, audited simulator, numerical checks and experiments are portfolio extensions, not claims of original algorithms.</p>
+    </section>
+
+    <section class="section" aria-labelledby="limits-heading">
+      <h2 id="limits-heading">What these results establish</h2>
+      <ul>
+        <li>The comparisons are development experiments on an idealized planar model. Short MPC horizons and mass mismatch expose failures; the model omits ground collision and aerodynamic drag.</li>
+        <li>Minimum-snap planning verifies smoothness and time scaling, not dynamic flight feasibility or collision avoidance. Endpoint derivatives are free.</li>
+        <li>Results are from simulation. Hardware deployment, real-time guarantees and universal robustness are not demonstrated.</li>
+      </ul>
+      <p class="project-note">Only selected project-generated visuals and a results summary are included here. Source code and course materials are not distributed on this page.</p>
+    </section>
+
+    <footer>© <span id="year"></span> Yixiao Liu. Hosted by GitHub Pages.</footer>
+  </main>
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>
