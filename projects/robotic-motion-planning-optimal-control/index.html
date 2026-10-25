@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="../../assets/css/style.css" />
   <link rel="stylesheet" href="../../assets/css/optimal-control.css" />
   <script src="../../assets/js/optimal-control.js?v=20261023-demos" defer></script>
-<link rel="stylesheet" href="/assets/css/portfolio.css?v=20261024-roba" />
+<link rel="stylesheet" href="/assets/css/portfolio.css?v=20261025-projects" />
 </head>
 <body><!-- shared-header:start --><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-name" href="/">Yixiao Liu</a><button class="menu-toggle" aria-expanded="false" aria-controls="site-navigation" hidden>Menu</button><nav id="site-navigation" aria-label="Main navigation"><a href="/">Home</a><a href="/publications/">Publications</a><a href="/projects/" aria-current="page">Projects</a><a href="/experience/">Experience</a></nav></header><!-- shared-header:end -->
   <main id="main-content" class="page optimal-control-page">
@@ -21,6 +21,7 @@
     <header class="header-container">
       <p class="project-eyebrow">Robotics · Penn MEAM 5170 coursework extension</p>
       <h1>Robotic Motion Planning<br class="desktop-break" /> and Optimal Control</h1>
+<p class="project-date">Fall 2025</p>
       <p class="project-intro">Recover a planar quadrotor to hover under motor limits, then explore how trajectory duration changes the smoothness of waypoint plans.</p>
       <ul class="technology-list" aria-label="Technologies">
         <li>Python</li><li>NumPy</li><li>SciPy</li><li>OSQP</li>
@@ -72,7 +73,7 @@
       </div>
 
       <div class="item result-note">
-        <p><span class="highlight">MPC N=10 uses 38.0% less control effort relative to hover, with 21.9% higher position RMSE and slower settling</span> than clipped LQR in this configuration. This is an error–effort tradeoff, not a universal advantage of MPC.</p>
+        <p><span class="highlight">MPC N=10 uses 38.0% less control effort relative to hover, with 21.9% higher position RMSE and slower settling</span> than clipped LQR in this configuration. </p>
       </div>
       <p>Control effort is the time integral of squared <em>applied</em> thrust deviation from nominal hover: <code>∫ ‖u(t) − u<sub>hover</sub>‖² dt</code>, with <code>u<sub>hover</sub> = [4.905, 4.905] N</code>. It counts deviations in either direction and <strong>does not measure physical energy consumption</strong>.</p>
       <p class="project-note">LQR and MPC use different objective and terminal-cost conventions. The settings below make this a matched-plant comparison, not an isolated test of constraint handling.</p>
@@ -81,12 +82,12 @@
         <summary>Controller settings</summary>
         <div class="detail-content">
           <ul>
-            <li><strong>Plant and rollout:</strong> state [y, z, θ, v<sub>y</sub>, v<sub>z</sub>, ω], initial state [0.5, 0.5, 0, 1, 1, 0]; mass 1 kg; moment arm 0.25 m; inertia 0.0625 kg m²; gravity 9.81 m/s². Nonlinear RK4 integration at 0.005 s; held control updates every 0.02 s; 10 s total; no disturbance in this displayed trial.</li>
+            <li><strong>Plant and rollout:</strong> state [y, z, θ, v<sub>y</sub>, v<sub>z</sub>, ω], initial state [0.5, 0.5, 0, 1, 1, 0]; mass 1 kg; moment arm 0.25 m; inertia 0.0625 kg m²; gravity 9.81 m/s². Nonlinear RK4 integration at 0.005 s; held control updates every 0.02 s; 10 s total; no disturbance in this displayed trial. The planar model omits ground collision and aerodynamic drag.</li>
             <li><strong>LQR:</strong> continuous infinite-horizon design with Q = diag(10, 10, 1, 1, 1, 1), R = I₂. No finite terminal cost; the CARE solution supplies the feedback gain. Applied commands are clipped to [0, 5.5] N per motor.</li>
             <li><strong>MPC:</strong> the same numerical Q and R in an unscaled discrete stage sum, terminal Q, forward-Euler prediction at 0.1 s. N counts states; N=10 has nine input steps and a 0.9 s prediction horizon. Motor bounds are imposed relative to hover.</li>
             <li><strong>Cost convention:</strong> multiplying the entire MPC objective by 0.1 leaves its optimizer unchanged and gives a rectangle-rule interpretation with terminal matrix 0.1Q, not Q or the CARE value matrix. These are not equivalent objectives.</li>
             <li><strong>Settling:</strong> all six absolute state errors must stay within [0.02, 0.02, 0.02, 0.05, 0.05, 0.05] in their respective SI units through the end of the finite run. Position RMSE is √mean(y² + z²), including the initial sample.</li>
-            <li><strong>Verification:</strong> metrics were independently recomputed from saved applied-input traces. The unrounded comparison is 37.977996% lower effort and 21.869478% higher position RMSE. Controller settings were not retuned to favor MPC.</li>
+            <li><strong>Verification:</strong> metrics were independently recomputed from saved applied-input traces. The unrounded comparison is 37.977996% lower effort and 21.869478% higher position RMSE. </li>
           </ul>
         </div>
       </details>
@@ -108,7 +109,7 @@
         <div class="detail-content">
           <p>Four degree-13 polynomial segments use 14 coefficients per coordinate in normalized local time. Waypoints are (−3, −4), (0, 0), (2, 3), (4, 0), (8, −4). Segment durations are uniformly 0.5, 1 or 2 s.</p>
           <p>Row-scaled equality constraints and a nullspace least-squares solve avoid explicitly forming a squared-condition-number monomial Hessian. Per coordinate, the equality matrix has rank 20 over 56 coefficients. The snap operator has a 16-dimensional piecewise-cubic kernel; restricting the constraints to that kernel rules out a feasible zero-snap path for these waypoint timings. No endpoint conditions were added to force a nonzero objective.</p>
-          <p>Independent adaptive integration gives 210.6953642383607 for the 4 s path. Maximum waypoint residual is 1.12 × 10<sup>−14</sup> m; the largest derivative-continuity residual is 6.91 × 10<sup>−11</sup> in its corresponding derivative units. Peaks in the figure are sampled, not certified continuous extrema. This is path planning; thrust, tilt and obstacle feasibility are not imposed.</p>
+          <p>Independent adaptive integration gives 210.6953642383607 for the 4 s path. Maximum waypoint residual is 1.12 × 10<sup>−14</sup> m; the largest derivative-continuity residual is 6.91 × 10<sup>−11</sup> in its corresponding derivative units. Peaks in the figure are sampled, not certified continuous extrema. The geometric optimization uses free endpoint derivatives; thrust, tilt and obstacle constraints are outside its formulation.</p>
         </div>
       </details>
     </section>
@@ -116,7 +117,7 @@
     <section class="section" aria-labelledby="secondary-heading">
       <h2 id="secondary-heading">Additional saved demonstrations</h2>
       <h3>Cart-pole: energy shaping to LQR</h3>
-      <p>This 20 s nonlinear simulation starts 30° from downward rest. Energy shaping raises the pole, then switches once to local LQR at 2.79 s. The saved trajectory settles at 9.84 s: cart position and wrapped upright angle stay within 0.05 m and 0.05 rad, and both speeds within 0.1 in SI units, through the remaining run. The cart reaches 4.06 m from the origin, exceeding the ±2 m reference bound during the transient; this does not demonstrate rail-constrained control or global convergence.</p>
+      <p>This 20 s nonlinear simulation starts 30° from downward rest. Energy shaping raises the pole, then switches once to local LQR at 2.79 s. The saved trajectory settles at 9.84 s: cart position and wrapped upright angle stay within 0.05 m and 0.05 rad, and both speeds within 0.1 in SI units, through the remaining run. The cart reaches 4.06 m from the origin, exceeding the ±2 m reference bound during the transient; cart travel is unconstrained in this simulation.</p>
       <figure class="project-figure demo-figure">
         <img src="../../assets/projects/optimal-control/cartpole_hybrid-poster.png" data-poster="../../assets/projects/optimal-control/cartpole_hybrid-poster.png" data-animation="../../assets/projects/optimal-control/cartpole_hybrid.gif" data-description="Playing the saved 20-second cart-pole simulation." width="600" height="450" loading="lazy" alt="Cart-pole swing-up with energy shaping, followed by upright LQR stabilization; lower panel shows wrapped upright angle error." />
         <div class="demo-controls"><button type="button" hidden aria-pressed="false">Play animation</button><span role="status">Static starting frame.</span></div>
@@ -126,7 +127,7 @@
       <figure class="project-figure demo-figure">
         <img src="../../assets/projects/optimal-control/minimum_snap_duration-poster.png" data-poster="../../assets/projects/optimal-control/minimum_snap_duration-poster.png" data-animation="../../assets/projects/optimal-control/minimum_snap_duration.gif" data-description="Playing the saved plans on the same 8-second clock." width="600" height="360" loading="lazy" alt="Two planned point motions traverse the same waypoints in 4 and 8 seconds; the faster marker waits at the endpoint after 4 seconds." />
         <div class="demo-controls"><button type="button" hidden aria-pressed="false">Play animation</button><span role="status">Static starting frame.</span></div>
-        <figcaption>Planned motion on one physical clock; the 4 s plan waits after completion. No quadrotor dynamics, thrust bounds, or collision constraints are simulated. The 128× squared-snap reduction is a planning result.</figcaption>
+        <figcaption>Planned waypoint motion on one physical clock; the 4 s plan waits after completion. The geometric planner minimizes squared snap with free endpoint derivatives.</figcaption>
       </figure>
       <details><summary>Optional modules: unicycle and iLQR</summary>
         <div class="detail-content"><p>Secondary examples include unicycle flatness-based planning and quadrotor-pendulum iLQR. Their saved studies, solver status and endpoint checks are documented in the linked technical report.</p></div>
@@ -144,15 +145,7 @@
       <p>Developed from <strong>Penn MEAM 5170, Fall 2025</strong> coursework. The implementation adds a constrained-MPC solver, scaled minimum-snap solver, nonlinear simulation corrections, numerical checks and reproducible experiments using the supplied course models and frameworks.</p>
     </section>
 
-    <section class="section" aria-labelledby="limits-heading">
-      <h2 id="limits-heading">What these results establish</h2>
-      <ul>
-        <li>The comparisons are development experiments on an idealized planar model. Short MPC horizons and mass mismatch expose failures; the model omits ground collision and aerodynamic drag.</li>
-        <li>Minimum-snap planning verifies smoothness and time scaling, not dynamic flight feasibility or collision avoidance. Endpoint derivatives are free.</li>
-        <li>Results are from simulation. Hardware deployment, real-time guarantees and universal robustness are not demonstrated.</li>
-      </ul>
-      <p class="project-note">Only selected project-generated visuals and a results summary are included here. The public repository contains the implementation; raw datasets, course archives, checkpoints and full run outputs are excluded.</p>
-    </section>
+
 
 
   </main><!-- shared-footer:start --><footer class="site-footer"><p>© <span id="year">2026</span> Yixiao Liu <span class="footer-contact-links"><a class="contact-item" href="mailto:yxlewis@engineering.upenn.edu"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg><span>Email</span></a> <a class="contact-item" href="/assets/Yixiao_Liu_Resume.pdf"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg><span>CV</span></a> <a class="contact-item" href="https://github.com/DasVade"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.3-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.2-1.5 6.2-6.9a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.7S17.5.7 15 2.4a13 13 0 0 0-6 0C6.5.7 5.3 1 5.3 1a5 5 0 0 0-.1 3.7 5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.2 6.6 6.2 6.9a3.4 3.4 0 0 0-.9 2.7V22"/></svg><span>GitHub</span></a></span></p><p>Hosted by GitHub Pages.</p></footer><!-- shared-footer:end -->
