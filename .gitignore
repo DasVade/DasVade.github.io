@@ -11,3 +11,6 @@ assets/libs/
 node_modules/
 vendor
 .idea
+# Local Python component-renderer cache
+__pycache__/
+*.py[cod]
