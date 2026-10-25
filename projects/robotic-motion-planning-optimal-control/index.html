@@ -78,7 +78,7 @@
       <p class="project-note">LQR and MPC use different objective and terminal-cost conventions. The settings below make this a matched-plant comparison, not an isolated test of constraint handling.</p>
 
       <details>
-        <summary>Controller settings and comparison boundaries</summary>
+        <summary>Controller settings</summary>
         <div class="detail-content">
           <ul>
             <li><strong>Plant and rollout:</strong> state [y, z, θ, v<sub>y</sub>, v<sub>z</sub>, ω], initial state [0.5, 0.5, 0, 1, 1, 0]; mass 1 kg; moment arm 0.25 m; inertia 0.0625 kg m²; gravity 9.81 m/s². Nonlinear RK4 integration at 0.005 s; held control updates every 0.02 s; 10 s total; no disturbance in this displayed trial.</li>
@@ -129,7 +129,7 @@
         <figcaption>Planned motion on one physical clock; the 4 s plan waits after completion. No quadrotor dynamics, thrust bounds, or collision constraints are simulated. The 128× squared-snap reduction is a planning result.</figcaption>
       </figure>
       <details><summary>Optional modules: unicycle and iLQR</summary>
-        <div class="detail-content"><p>Unicycle flatness and iLQR remain secondary coursework modules. Their saved studies are separate tasks and are not evidence of quadrotor hover performance. iLQR optimization and endpoint checks have task-specific limitations; no additional successful maneuver is claimed here. The page prioritizes the verified hover, cart-pole and waypoint examples above.</p></div>
+        <div class="detail-content"><p>Secondary examples include unicycle flatness-based planning and quadrotor-pendulum iLQR. Their saved studies, solver status and endpoint checks are documented in the linked technical report.</p></div>
       </details>
     </section>
 
@@ -141,7 +141,7 @@
         <li><strong>Numerical checks:</strong> verified hover and linearization, input-bound offsets, QP residuals, polynomial continuity, objective nullspaces and independent integration.</li>
         <li><strong>Reproducible experiments:</strong> recorded configurations, seeds, solver settings and numerical outputs for horizon, cost-weight, disturbance, mass-mismatch and duration studies.</li>
       </ul>
-      <p>This project extends <strong>Penn MEAM 5170, Fall 2025</strong> coursework using established control and planning methods. Supplied course frameworks and models remain attributed to the course. Existing coursework included a completed minimum-snap implementation; the scaled solver, audited simulator, numerical checks and experiments are portfolio extensions, not claims of original algorithms.</p>
+      <p>Developed from <strong>Penn MEAM 5170, Fall 2025</strong> coursework. The implementation adds a constrained-MPC solver, scaled minimum-snap solver, nonlinear simulation corrections, numerical checks and reproducible experiments using the supplied course models and frameworks.</p>
     </section>
 
     <section class="section" aria-labelledby="limits-heading">

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Reconstruction and Neural Rendering | Yixiao Liu</title>
-  <meta name="description" content="Calibrated stereo reconstruction, audited NeRF evaluation and controlled positional-encoding experiments from Penn CIS 5800 coursework." />
+  <meta name="description" content="Calibrated stereo reconstruction, NeRF evaluation and controlled positional-encoding experiments from Penn CIS 5800 coursework." />
   <link rel="canonical" href="https://yixiaoliu.me/projects/3d-reconstruction-neural-rendering/" />
   <link rel="icon" href="../../favicon.ico" sizes="any" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,7 +30,7 @@
       <a href="../../assets/projects/reconstruction/nerf-test.png"><img src="../../assets/projects/reconstruction/nerf-test.png" width="1440" height="960" alt="Worst and best NeRF test views: target, unenhanced prediction and absolute RGB error for views 101 and 104." /></a>
       <figcaption>Lowest-scoring view 101: 22.68 dB / 0.777 SSIM. Highest-scoring view 104: 26.96 dB / 0.866 SSIM. Blur and remaining errors are retained; open for full-size labels.</figcaption>
     </figure>
-    <p>The fresh model uses 32 samples per ray and known camera poses. Camera-convention checks corrected the image-down ray sign; finite-interval rendering and analytic opacity tests make assumptions explicit. This is a course-method reproduction and experimental extension, not a new NeRF algorithm.</p>
+    <p>The fresh model uses 32 samples per ray and known camera poses. Camera-convention checks corrected the image-down ray sign; finite-interval rendering and analytic opacity tests make assumptions explicit. The formal run uses disjoint training, validation and test views.</p>
     <details><summary>Training, splits and metric scope</summary><div class="detail-content">
       <p>90 training views (0–89), five validation views (90/92/94/96/98), six test views (100–105). Seed 5670; 20,000 training steps; 1,024 rays per step; RTX 4070 Ti; approximately 104 s including validation. The test renderer is fixed at 32 samples. Mean PSNR is averaged over per-view dB values. SSIM uses an 11×11 Gaussian window with sigma 1.5 and RGB averaging.</p>
       <p>The test views are disjoint for this fresh model, but earlier legacy experiments inspected some images. This is a small development evaluation, not an externally untouched benchmark.</p>
@@ -66,10 +66,10 @@
     </figure>
   </section>
   <section class="section" aria-labelledby="contributions-heading">
-    <h2 id="contributions-heading">Coursework and implementation contributions</h2>
-    <p>Penn CIS 5800 supplied the tasks, data, calibration, architecture and frameworks. The consolidation preserves a traceable baseline. Extensions include camera/ray audits, the image-y sign correction, finite rendering checks, validation-selected training, explicit independent-view evaluation, reproducible exports and controlled experiments, developed with coding-assistant support. File presence does not establish authorship of every supplied line.</p>
+    <h2 id="contributions-heading">About the project</h2>
+    <p>Developed from Penn CIS 5800 coursework using the supplied tasks, calibration, architecture and frameworks. Implementation work includes camera/ray checks, the image-y sign correction, finite rendering tests, validation-selected training, independent-view evaluation and controlled experiments. The original NeRF baseline is preserved.</p>
     <h2>Limitations</h2>
-    <p>One static synthetic NeRF scene, one training seed and 100×100 images limit generalization claims. Thin structures, specular surfaces and edges retain errors. Stereo has holes, outliers and scene-specific filtering; no depth-accuracy claim is supported. Known calibration is assumed. This is neither SLAM nor a dynamic world model, and no hardware deployment is demonstrated.</p>
+    <p>One static synthetic NeRF scene, one training seed and 100×100 images limit generalization claims. Thin structures, specular surfaces and edges retain errors. Stereo has holes, outliers and scene-specific filtering. Depth ground truth is unavailable; the comparison measures coverage and consistency. Known calibration is assumed.</p>
   </section>
 
 </main><!-- shared-footer:start --><footer class="site-footer"><p>© <span id="year">2026</span> Yixiao Liu <span class="footer-contact-links"><a class="contact-item" href="mailto:yxlewis@engineering.upenn.edu"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg><span>Email</span></a> <a class="contact-item" href="/assets/Yixiao_Liu_Resume.pdf"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg><span>CV</span></a> <a class="contact-item" href="https://github.com/DasVade"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.3-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.2-1.5 6.2-6.9a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.7S17.5.7 15 2.4a13 13 0 0 0-6 0C6.5.7 5.3 1 5.3 1a5 5 0 0 0-.1 3.7 5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.2 6.6 6.2 6.9a3.4 3.4 0 0 0-.9 2.7V22"/></svg><span>GitHub</span></a></span></p><p>Hosted by GitHub Pages.</p></footer><!-- shared-footer:end -->
