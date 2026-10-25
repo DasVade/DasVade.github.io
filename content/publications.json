@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Is Forgetting Unified? Exploring Concept Unlearning in Unified Multimodal Models",
+    "authors": ["Zhongkai Xue", "Junkai Chen", "Mingcong Lei", "Rumo Zhang", "Yixiao Liu", "Zhimin Sun", "Shu Wu", "Qiang Liu", "Lihua Zhang", "Liang Wang"],
+    "summary": "Unified multimodal models can generate images and understand visual content, but forgetting a concept in one pathway does not necessarily remove it from the other. We introduce UUBench to evaluate cross-pathway concept unlearning and propose UniForget to jointly suppress target concepts while preserving other model capabilities.",
+    "figure": "/assets/publications/uubench-overview.png",
+    "figure_width": 1253,
+    "figure_height": 1002,
+    "figure_alt": "UUBench overview of concept unlearning across visual understanding and image generation."
+  }
+]

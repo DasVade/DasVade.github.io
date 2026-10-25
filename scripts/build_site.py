@@ -1,9 +1,23 @@
 """Render shared static navigation/footer. No dependencies; GitHub Pages serves HTML directly."""
 from pathlib import Path
-import argparse, re
+import argparse, re, json
+from html import escape
 from contact_icons import contact_link
 ROOT = Path(__file__).resolve().parents[1]
 NAV = [('Home', '/'), ('Publications', '/publications/'), ('Projects', '/projects/'), ('Experience', '/experience/')]
+def publication_markup(compact=False):
+    entries = json.loads((ROOT / 'content/publications.json').read_text(encoding='utf-8-sig'))
+    cards = []
+    heading = 'h3' if compact else 'h2'
+    for entry in entries:
+        authors = ', '.join('<strong>' + escape(name) + '</strong>' if name == 'Yixiao Liu' else escape(name) for name in entry['authors'])
+        figure = escape(entry['figure'], quote=True)
+        cards.append(f'''<article class="publication-entry{' publication-compact' if compact else ''}">
+  <figure class="publication-figure"><a href="{figure}" aria-label="Open full-size UUBench overview figure"><img src="{figure}" width="{int(entry['figure_width'])}" height="{int(entry['figure_height'])}" alt="{escape(entry['figure_alt'], quote=True)}" loading="lazy" /><span>Open full-size figure</span></a></figure>
+  <div class="publication-copy"><{heading} class="publication-heading">{escape(entry['title'])}</{heading}><p class="publication-authors">{authors}</p><p class="publication-summary">{escape(entry['summary'])}</p></div>
+</article>''')
+    return '\n'.join(cards)
+
 def render(path, source):
     relative = path.relative_to(ROOT).as_posix()
     active = '/' if relative == 'index.html' else '/' + relative.split('/')[0] + '/'
@@ -15,6 +29,11 @@ def render(path, source):
         source, count = re.subn(pattern, f'<!-- shared-{name}:start -->{text}<!-- shared-{name}:end -->', source, flags=re.S)
         if count != 1:
             raise ValueError(f'{relative}: expected one shared {name} region')
+    if relative in ('index.html', 'publications/index.html'):
+        source, count = re.subn(r'<!-- shared-publications:start -->.*?<!-- shared-publications:end -->',
+            lambda _: '<!-- shared-publications:start -->' + publication_markup(relative == 'index.html') + '<!-- shared-publications:end -->', source, flags=re.S)
+        if count != 1:
+            raise ValueError(f'{relative}: expected one shared publication region')
     return source
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
