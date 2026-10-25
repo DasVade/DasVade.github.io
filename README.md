@@ -1,6 +1,6 @@
 # Yixiao Liu — academic portfolio
 
-Buildless HTML/CSS/JavaScript website, served by GitHub Pages from `main` at the repository root. Pushing to `main` can trigger deployment. The academic portfolio changes are local-preview work only until separately authorized.
+Buildless HTML/CSS/JavaScript website, served by GitHub Pages from `main` at the repository root. Pushing to `main` can trigger deployment. The live site is https://yixiaoliu.me/.
 
 ## Local workflow
 
@@ -15,6 +15,6 @@ Open http://127.0.0.1:8840/. No npm installation or production compilation is re
 
 Routes: `/`, `/publications/`, `/projects/`, `/experience/`, plus the four project-detail routes under `/projects/`.
 
-Approved publication content is stored once in `content/publications.json`; the static renderer reuses it on the homepage and Publications page. Formal research/industry appointments have not been supplied in verified website content; the Experience page retains its concise empty state. Coursework and team project contributions remain on project pages and are not presented as formal appointments. `content/data.json` is historical, unused placeholder data and is not used to generate the website.
+Publication content is stored once in `content/publications.json`; the static renderer reuses it on the homepage and Publications page. Formal research/industry appointments have not been supplied in verified website content; the Experience page retains its concise empty state. Coursework and team project contributions remain on project pages and are not presented as formal appointments. `content/data.json` is historical, unused placeholder data and is not used to generate the website.
 
 Selected figures and media retain their existing provenance notes under `assets/projects/`; university logo notes are under `assets/logos/`. Project-index cards use still images, never video autoplay. Detail-page playback controls and reduced-motion behavior are retained.
