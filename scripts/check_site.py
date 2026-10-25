@@ -34,4 +34,4 @@ for p in paths:
   assert target.is_file(),(p,ref)
   if u.fragment and target.suffix=='.html':assert u.fragment in Page(target.read_text(encoding='utf-8')).ids,(p,ref)
 
-print('PASS: seven static pages; nav order and active states; metadata; local links, fragments and media paths; image alt text and email')
+print(f'PASS: {len(paths)} static pages; nav order and active states; metadata; local links, fragments and media paths; image alt text and email')

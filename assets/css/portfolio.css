@@ -71,3 +71,6 @@ a.contact-item:hover { text-decoration-thickness:2px; }
 .footer-contact-links { display:inline-flex; flex-wrap:wrap; justify-content:center; column-gap:1rem; row-gap:.5rem; margin-left:.8rem; vertical-align:middle; }
 .footer-contact-links .contact-icon { width:.95rem; height:.95rem; flex-basis:.95rem; }
 @media(max-width:480px) { .footer-contact-links { display:flex; margin:.65rem 0 0; } }
+/* Four featured projects retain the same cards with a balanced two-column grid. */
+.compact-grid.four-projects { grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media(max-width:650px) { .compact-grid.four-projects { grid-template-columns:minmax(0,1fr); } }
