@@ -1,6 +1,7 @@
 """Render shared static navigation/footer. No dependencies; GitHub Pages serves HTML directly."""
 from pathlib import Path
 import argparse, re
+from contact_icons import contact_link
 ROOT = Path(__file__).resolve().parents[1]
 NAV = [('Home', '/'), ('Publications', '/publications/'), ('Projects', '/projects/'), ('Experience', '/experience/')]
 def render(path, source):
@@ -8,7 +9,7 @@ def render(path, source):
     active = '/' if relative == 'index.html' else '/' + relative.split('/')[0] + '/'
     links = ''.join(f'<a href="{url}"' + (' aria-current="page"' if url == active else '') + f'>{label}</a>' for label, url in NAV)
     header = '<a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-name" href="/">Yixiao Liu</a><button class="menu-toggle" aria-expanded="false" aria-controls="site-navigation" hidden>Menu</button><nav id="site-navigation" aria-label="Main navigation">' + links + '</nav></header>'
-    footer = '<footer class="site-footer"><p>© <span id="year">2026</span> Yixiao Liu · <a href="mailto:yxlewis@engineering.upenn.edu">Email</a> · <a href="/assets/Yixiao_Liu_Resume.pdf">CV</a> · <a href="https://github.com/DasVade">GitHub</a></p><p>Hosted by GitHub Pages.</p></footer>'
+    footer = '<footer class="site-footer"><p>© <span id="year">2026</span> Yixiao Liu <span class="footer-contact-links">' + ' '.join([contact_link('email', 'Email', 'mailto:yxlewis@engineering.upenn.edu'), contact_link('cv', 'CV', '/assets/Yixiao_Liu_Resume.pdf'), contact_link('github', 'GitHub', 'https://github.com/DasVade')]) + '</span></p><p>Hosted by GitHub Pages.</p></footer>'
     for name, text in [('header', header), ('footer', footer)]:
         pattern = f'<!-- shared-{name}:start -->.*?<!-- shared-{name}:end -->'
         source, count = re.subn(pattern, f'<!-- shared-{name}:start -->{text}<!-- shared-{name}:end -->', source, flags=re.S)
