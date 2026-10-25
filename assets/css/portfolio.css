@@ -74,3 +74,15 @@ a.contact-item:hover { text-decoration-thickness:2px; }
 /* Four featured projects retain the same cards with a balanced two-column grid. */
 .compact-grid.four-projects { grid-template-columns:repeat(2,minmax(0,1fr)); }
 @media(max-width:650px) { .compact-grid.four-projects { grid-template-columns:minmax(0,1fr); } }
+
+/* Project dates and the concise industry experience entry. */
+.project-date { color:#555; font-size:.86rem; font-weight:500; margin:.35rem 0 .8rem; }
+.card-body .project-date { margin:-.25rem 0 .8rem; }
+.header-container .project-date { margin:.4rem 0 1rem; }
+.experience-entry { display:flex; align-items:flex-start; gap:1.2rem; margin:1rem 0 3rem; }
+.experience-entry .company-logo { width:88px; height:auto; flex:0 0 88px; object-fit:contain; margin-top:.3rem; }
+.experience-entry h2 { border:0; padding:0; margin:0 0 .65rem; font-size:1.15rem; line-height:1.5; }
+.experience-entry p { margin:.4rem 0; }
+.experience-role { font-weight:550; }
+.experience-dates { color:#555; font-size:.94rem; }
+@media(max-width:480px) { .experience-entry { gap:.8rem; } .experience-entry .company-logo { width:64px; flex-basis:64px; } }

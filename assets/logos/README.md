@@ -10,3 +10,9 @@ aspect ratios in 26 × 26 px boxes.
 
 University marks remain the property of their respective universities. This page
 uses them to identify the education entries, without implying endorsement.
+
+## UAES
+
+`uaes.png` is the original transparent 470×215 logo served by the
+[UAES official recruiting site](https://www.hotjob.cn/wt/UAES/web/index).
+Artwork and colors are unchanged; the Experience entry preserves its proportions.
