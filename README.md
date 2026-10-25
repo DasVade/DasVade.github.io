@@ -11,9 +11,9 @@ python scripts/check_site.py
 python -m http.server 8840 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:8840/. No npm installation or production compilation is required. `scripts/build_site.py` renders the shared header and footer into all eight static pages; commit the generated HTML alongside component changes. Edit page content outside the shared marker regions.
+Open http://127.0.0.1:8840/. No npm installation or production compilation is required. `scripts/build_site.py` renders the shared header and footer into all ten static pages; commit the generated HTML alongside component changes. Edit page content outside the shared marker regions.
 
-Routes: `/`, `/publications/`, `/projects/`, `/experience/`, plus the four project-detail routes under `/projects/`.
+Routes: `/`, `/publications/`, `/projects/`, `/experience/`, plus the six project-detail routes under `/projects/`.
 
 Publication content is stored once in `content/publications.json`; the static renderer reuses it on the homepage and Publications page. Formal research/industry appointments have not been supplied in verified website content; the Experience page retains its concise empty state. Coursework and team project contributions remain on project pages and are not presented as formal appointments. `content/data.json` is historical, unused placeholder data and is not used to generate the website.
 
