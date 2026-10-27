@@ -13,6 +13,6 @@ migration (PR #1, source commit b121846). The display assets are generated from 
   per-joint comparisons, copied unchanged from docs/executed.
 
 Videos use original 10 fps sample timing, matched scales for comparisons, and
-no visual error amplification. Source group: Yixiao Liu, Yusen Wu, Huaqian Zhao.
+no visual error amplification.
 Supplied model/mesh provenance and simulation limitations remain documented in
 the public technical reports.
