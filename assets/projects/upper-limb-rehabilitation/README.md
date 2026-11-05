@@ -13,3 +13,21 @@ Selected images are extracted from the report at their native dimensions:
 - `prototype-assembly.jpg`: Figure 25, PDF page 20.
 
 The detail page uses “curved guide” because the report's English and Chinese names for its guide curve differ. Design targets in the report are kept separate from the page's prototype demonstration narrative.
+
+## Final presentation media
+
+Selected from the supplied final PPTX (21 slides). The deck's displayed date
+does not replace the original project date.
+
+- `final-wearable-prototype.jpg`: slide 13, embedded image27.
+- `final-fabrication.jpg`, `final-electronics-debugging.jpg`: slide 20, image39/image40.
+- `hand-cad-motion.mp4`, `wrist-cad-motion.mp4`, `assembly-cad-motion.mp4`:
+  slides 9–11, image24–26; CAD mechanism animations.
+- `wrist-prototype-demo.mp4`, `hand-elbow-prototype-demo.mp4`:
+  slide 18, image34/image35; physical prototype recordings.
+- `integrated-prototype-demo.mp4`: slide 19, image36; physical wearable demonstration.
+
+MP4s are H.264 conversions of embedded GIFs with their variable frame timing,
+full frame and source resolution retained. JPEG posters use the first frame.
+No autoplay or looping is requested. The presentation and modeling ZIP are not
+hosted; existing report assets are preserved.
