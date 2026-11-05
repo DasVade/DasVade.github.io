@@ -6,6 +6,7 @@
     "figure": "/assets/publications/uubench-overview.png",
     "figure_width": 1253,
     "figure_height": 1002,
-    "figure_alt": "UUBench overview of concept unlearning across visual understanding and image generation."
+    "figure_alt": "UUBench overview of concept unlearning across visual understanding and image generation.",
+    "arxiv_url": "https://arxiv.org/abs/2611.04467"
   }
 ]
