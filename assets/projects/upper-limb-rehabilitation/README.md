@@ -31,3 +31,13 @@ MP4s are H.264 conversions of embedded GIFs with their variable frame timing,
 full frame and source resolution retained. JPEG posters use the first frame.
 No autoplay or looping is requested. The presentation and modeling ZIP are not
 hosted; existing report assets are preserved.
+
+## Final elbow detail and workshop gallery
+
+- `final-elbow-guide-cad.png`: the owner's selected final CAD detail, copied
+  unchanged from the supplied 361×493 PNG. It replaces the earlier curved-guide
+  illustration on the page; the earlier asset and report remain available.
+- `painting-preparation.jpg`: the owner's supplied painting-preparation photo,
+  saved as a local JPEG without EXIF metadata and with its full aspect ratio.
+- The workshop gallery reuses final presentation assembly/debugging photos and
+  the wearable prototype photo showing the white-painted acrylic elbow plates.

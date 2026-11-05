@@ -9,3 +9,7 @@
 .engineering-project-page .engineering-links { display:flex; flex-wrap:wrap; gap:1rem; }
 .engineering-project-page .engineering-links a { color:#2a4d9b; text-decoration:underline; text-underline-offset:.2em; }
 @media(max-width:650px) { .engineering-project-page .engineering-gallery { grid-template-columns:minmax(0,1fr); gap:0; } }
+
+/* Final elbow detail and workshop gallery on the rehabilitation page. */
+.engineering-project-page .final-elbow-guide { max-width:361px; margin:1.4rem auto; }
+.engineering-project-page .build-gallery img { width:auto; max-width:100%; max-height:320px; margin-inline:auto; }
