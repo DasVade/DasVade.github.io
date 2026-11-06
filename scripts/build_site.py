@@ -17,9 +17,9 @@ def publication_markup(compact=False):
     for entry in entries:
         authors = ', '.join('<strong>' + escape(name) + '</strong>' if name == 'Yixiao Liu' else escape(name) for name in entry['authors'])
         figure = escape(entry['figure'], quote=True)
-        links = ('<p class="card-links"><a href="' + escape(entry['arxiv_url'], quote=True) + '">arXiv</a></p>') if entry.get('arxiv_url') else ''
+        links = ('<p class="card-links"><a href="' + escape(entry['arxiv_url'], quote=True) + '">[arxiv]</a></p>') if entry.get('arxiv_url') else ''
         cards.append(f'''<article class="publication-entry{' publication-compact' if compact else ''}">
-  <figure class="publication-figure"><a href="{figure}" aria-label="Open full-size UUBench overview figure"><img src="{figure}" width="{int(entry['figure_width'])}" height="{int(entry['figure_height'])}" alt="{escape(entry['figure_alt'], quote=True)}" loading="lazy" /><span>Open full-size figure</span></a></figure>
+  <figure class="publication-figure"><img src="{figure}" width="{int(entry['figure_width'])}" height="{int(entry['figure_height'])}" alt="{escape(entry['figure_alt'], quote=True)}" loading="lazy" /></figure>
   <div class="publication-copy"><{heading} class="publication-heading">{escape(entry['title'])}</{heading}><p class="publication-authors">{authors}</p><p class="publication-summary">{escape(entry['summary'])}</p>{links}</div>
 </article>''')
     return '\n'.join(cards)
