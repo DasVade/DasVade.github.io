@@ -1,5 +1,5 @@
 /* One approved publication entry, with uncropped locally hosted overview imagery. */
-.publication-entry { display:grid; grid-template-columns:minmax(0,32%) minmax(0,1fr); gap:1.5rem; align-items:start; margin:0 0 2rem; }
+.publication-entry { display:grid; grid-template-columns:minmax(0,40%) minmax(0,1fr); gap:1.5rem; align-items:start; margin:0 0 2rem; }
 .publication-figure { margin:0; min-width:0; }
 .publication-figure img { display:block; width:100%; height:auto; object-fit:contain; background:#fff; border:1px solid #d9dfe9; border-radius:.3rem; }
 .publication-figure a { color:#2a4d9b; }
@@ -9,7 +9,7 @@
 .publication-authors { margin:0 0 .8rem; color:#555; font-size:.92rem; line-height:1.65; }
 .publication-authors strong { color:#222; font-weight:700; }
 .publication-summary { margin:0; }
-.publication-compact { grid-template-columns:minmax(0,26%) minmax(0,1fr); gap:1.2rem; margin-bottom:0; }
+.publication-compact { gap:1.2rem; margin-bottom:0; }
 .publication-compact .publication-heading { font-size:1.06rem; margin-bottom:.45rem; }
 .publication-compact .publication-authors { font-size:.85rem; margin-bottom:.5rem; }
 .publication-compact .publication-summary { font-size:.92rem; }
