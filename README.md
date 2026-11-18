@@ -20,15 +20,14 @@ HTML page, immediately before `</body>`. Update its site token in
 `scripts/build_site.py` and regenerate the pages instead of adding a second
 script by hand. Analytics uses the manual snippet with GitHub Pages.
 
-Google Analytics 4 is optional. The English preferences notice distinguishes
-it from Cloudflare, and the footer button lets visitors change their choice.
-The shared `assets/js/analytics.js` uses basic consent mode: no Google tag or
-measurement request before opt-in. A separate collector document reports one
-page view per permitted page load using the canonical path with no query,
-fragment, referring URL or personal title. Google advertising consent stays
-denied. Withdrawal stops Google Analytics and clears its cookies for the site.
-Re-enabling after withdrawal reloads the page so the tag starts once in a fresh
-document rather than issuing a second configuration on the same page.
+Google Analytics 4 loads automatically with no custom consent dialog or
+preferences button. The shared `assets/js/analytics.js` keeps analytics and
+advertising storage denied, so Google can send cookieless measurements without
+inventing visitor consent. Cookie-based visitor/session metrics may be limited.
+A separate collector document reports one page view per load using the canonical
+path with no query, fragment, referring URL or personal title. It has no links,
+forms or personal content for enhanced measurement to inspect. Old popup
+preferences are neither read nor overwritten. Cloudflare remains unchanged.
 
 Publication content is stored once in `content/publications.json`; the static renderer reuses it on the homepage and Publications page. The Experience page lists the UAES Software Engineer internship, Jun 2025 – Aug 2025. `content/data.json` is historical, unused placeholder data and is not used to generate the website.
 
