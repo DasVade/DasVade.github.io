@@ -10,7 +10,7 @@ ANALYTICS = """<!-- Cloudflare Web Analytics -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4b5406a7427d4be59e8f647991ed646a"}'></script>
 <!-- End Cloudflare Web Analytics -->"""
 GOOGLE_ANALYTICS = """<!-- shared-analytics:start -->
-<script src="/assets/js/analytics.js?v=4"></script>
+<script src="/assets/js/analytics.js?v=5"></script>
 <!-- shared-analytics:end -->"""
 
 
@@ -30,6 +30,8 @@ def render_analytics(source, relative):
         raise ValueError(f'{relative}: expected one closing body tag')
     if body.count('</head>') != 1:
         raise ValueError(f'{relative}: expected one closing head tag')
+    if 'rel="apple-touch-icon"' not in body:
+        body = body.replace('</head>', '<link rel="apple-touch-icon" sizes="192x192" href="/assets/favicon.png" />\n</head>')
     return body + ANALYTICS + '\n' + GOOGLE_ANALYTICS + '\n' + closing + tail
 
 
