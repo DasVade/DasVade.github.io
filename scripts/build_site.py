@@ -9,17 +9,37 @@ DOCUMENTS = ('Yixiao_Liu_CV.pdf', 'Yixiao_Liu_Resume.pdf')
 ANALYTICS = """<!-- Cloudflare Web Analytics -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4b5406a7427d4be59e8f647991ed646a"}'></script>
 <!-- End Cloudflare Web Analytics -->"""
+ANALYTICS_PREFERENCES = """<!-- shared-analytics-preferences:start -->
+<section id="analytics-preferences" class="analytics-preferences" aria-labelledby="analytics-title" hidden>
+  <h2 id="analytics-title">Analytics preferences</h2>
+  <p>Cloudflare Web Analytics is used for basic site metrics. Optional Google Analytics uses cookies to measure page visits and stays off unless you allow it.</p>
+  <p id="analytics-status" role="status"></p>
+  <div class="analytics-choices">
+    <button type="button" id="analytics-decline">Decline</button>
+    <button type="button" id="analytics-allow">Allow Google Analytics</button>
+  </div>
+</section>
+<script src="/assets/js/analytics.js?v=1"></script>
+<!-- shared-analytics-preferences:end -->"""
+ANALYTICS_STYLE = '<link id="analytics-stylesheet" rel="stylesheet" href="/assets/css/analytics.css?v=1" />'
 
 
 def render_analytics(source, relative):
     source = re.sub(r'<!-- Cloudflare Web Analytics -->.*?<!-- End Cloudflare Web Analytics -->\n?',
                     '', source, flags=re.S)
-    if re.search(r'data-cf-beacon|static\.cloudflareinsights\.com/beacon\.min\.js', source, re.I):
-        raise ValueError(f'{relative}: remove the unmanaged Cloudflare beacon to avoid duplicates')
+    source = re.sub(r'<!-- shared-analytics-preferences:start -->.*?<!-- shared-analytics-preferences:end -->\n?',
+                    '', source, flags=re.S)
+    source = re.sub(r'<link id="analytics-stylesheet"[^>]*>\n?', '', source)
+    if re.search(r'data-cf-beacon|static\.cloudflareinsights\.com/beacon\.min\.js|'
+                 r'googletagmanager\.com/gtag/js|src="/assets/js/analytics\.js', source, re.I):
+        raise ValueError(f'{relative}: remove the unmanaged analytics script to avoid duplicates')
     body, closing, tail = source.rpartition('</body>')
     if not closing or closing in body:
         raise ValueError(f'{relative}: expected one closing body tag')
-    return body + ANALYTICS + '\n' + closing + tail
+    if body.count('</head>') != 1:
+        raise ValueError(f'{relative}: expected one closing head tag')
+    body = body.replace('</head>', ANALYTICS_STYLE + '\n</head>')
+    return body + ANALYTICS + '\n' + ANALYTICS_PREFERENCES + '\n' + closing + tail
 
 
 def document_url(filename):
@@ -46,6 +66,7 @@ def render(path, source):
     links = ''.join(f'<a href="{url}"' + (' aria-current="page"' if url == active else '') + f'>{label}</a>' for label, url in NAV)
     header = '<a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-name" href="/">Yixiao Liu</a><button class="menu-toggle" aria-expanded="false" aria-controls="site-navigation" hidden>Menu</button><nav id="site-navigation" aria-label="Main navigation">' + links + '</nav></header>'
     footer = '<footer class="site-footer"><p>© <span id="year">2026</span> Yixiao Liu <span class="footer-contact-links">' + ' '.join([contact_link('email', 'Email', 'mailto:yxlewis@engineering.upenn.edu'), contact_link('cv', 'CV', document_url('Yixiao_Liu_CV.pdf')), contact_link('github', 'GitHub', 'https://github.com/DasVade')]) + '</span></p><p>Hosted by GitHub Pages.</p></footer>'
+    footer = footer.replace('</footer>', '<button type="button" id="analytics-settings" aria-controls="analytics-preferences" aria-expanded="false" hidden>Analytics preferences</button></footer>')
     for name, text in [('header', header), ('footer', footer)]:
         pattern = f'<!-- shared-{name}:start -->.*?<!-- shared-{name}:end -->'
         source, count = re.subn(pattern, f'<!-- shared-{name}:start -->{text}<!-- shared-{name}:end -->', source, flags=re.S)

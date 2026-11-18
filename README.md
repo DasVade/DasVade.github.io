@@ -20,6 +20,14 @@ HTML page, immediately before `</body>`. Update its site token in
 `scripts/build_site.py` and regenerate the pages instead of adding a second
 script by hand. Analytics uses the manual snippet with GitHub Pages.
 
+Google Analytics 4 is optional. The English preferences notice distinguishes
+it from Cloudflare, and the footer button lets visitors change their choice.
+The shared `assets/js/analytics.js` uses basic consent mode: no Google tag or
+measurement request before opt-in. A separate collector document reports one
+page view per permitted page load using the canonical path with no query,
+fragment, referring URL or personal title. Google advertising consent stays
+denied. Withdrawal stops Google Analytics and clears its cookies for the site.
+
 Publication content is stored once in `content/publications.json`; the static renderer reuses it on the homepage and Publications page. The Experience page lists the UAES Software Engineer internship, Jun 2025 – Aug 2025. `content/data.json` is historical, unused placeholder data and is not used to generate the website.
 
 Selected figures and media retain their existing provenance notes under `assets/projects/`; university logo notes are under `assets/logos/`. Project-index cards use still images, never video autoplay. Detail-page playback controls and reduced-motion behavior are retained.

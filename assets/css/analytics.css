@@ -1,0 +1,44 @@
+#analytics-settings {
+  border: 0;
+  padding: .3rem;
+  background: none;
+  color: #2a4d9b;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  cursor: pointer;
+}
+
+.analytics-preferences {
+  position: fixed;
+  z-index: 10;
+  inset-inline-end: 1rem;
+  bottom: 1rem;
+  box-sizing: border-box;
+  width: min(28rem, calc(100% - 2rem));
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding: 1rem;
+  background: #fff;
+  color: #222;
+  border: 1px solid #aebacd;
+  border-radius: .5rem;
+  box-shadow: 0 .25rem 1rem #17274426;
+}
+
+.analytics-preferences h2 { margin: 0 0 .35rem; padding: 0; border: 0; font-size: 1.05rem; }
+.analytics-preferences p { margin: 0 0 .65rem; font-size: .9rem; }
+.analytics-preferences p:empty { display: none; }
+.analytics-choices { display: flex; flex-wrap: wrap; gap: .5rem; }
+.analytics-choices button {
+  padding: .4rem .65rem;
+  border: 1px solid #aebacd;
+  border-radius: .35rem;
+  background: #f4f6fa;
+  color: #193b75;
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.analytics-choices button:hover { background: #e8eef9; }
+#analytics-settings:focus-visible, .analytics-choices button:focus-visible { outline: 2px solid #2a4d9b; outline-offset: 2px; }
