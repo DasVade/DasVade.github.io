@@ -6,6 +6,22 @@ from contact_icons import contact_link
 ROOT = Path(__file__).resolve().parents[1]
 NAV = [('Home', '/'), ('Publications', '/publications/'), ('Projects', '/projects/'), ('Experience', '/experience/')]
 DOCUMENTS = ('Yixiao_Liu_CV.pdf', 'Yixiao_Liu_Resume.pdf')
+ANALYTICS = """<!-- Cloudflare Web Analytics -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4b5406a7427d4be59e8f647991ed646a"}'></script>
+<!-- End Cloudflare Web Analytics -->"""
+
+
+def render_analytics(source, relative):
+    source = re.sub(r'<!-- Cloudflare Web Analytics -->.*?<!-- End Cloudflare Web Analytics -->\n?',
+                    '', source, flags=re.S)
+    if re.search(r'data-cf-beacon|static\.cloudflareinsights\.com/beacon\.min\.js', source, re.I):
+        raise ValueError(f'{relative}: remove the unmanaged Cloudflare beacon to avoid duplicates')
+    body, closing, tail = source.rpartition('</body>')
+    if not closing or closing in body:
+        raise ValueError(f'{relative}: expected one closing body tag')
+    return body + ANALYTICS + '\n' + closing + tail
+
+
 def document_url(filename):
     """Keep stable PDF paths and refresh cached downloads when their bytes change."""
     digest = hashlib.sha256((ROOT/'assets'/filename).read_bytes()).hexdigest()[:12]
@@ -43,7 +59,7 @@ def render(path, source):
     for filename in DOCUMENTS:
         source = re.sub(r'href="/?assets/' + re.escape(filename) + r'(?:\?[^\"]*)?"',
             lambda _: 'href="' + document_url(filename) + '"', source)
-    return source
+    return render_analytics(source, relative)
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--check', action='store_true', help='Fail if shared regions are stale')
