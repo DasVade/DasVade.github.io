@@ -19,7 +19,7 @@ ANALYTICS_PREFERENCES = """<!-- shared-analytics-preferences:start -->
     <button type="button" id="analytics-allow">Allow Google Analytics</button>
   </div>
 </section>
-<script src="/assets/js/analytics.js?v=1"></script>
+<script src="/assets/js/analytics.js?v=2"></script>
 <!-- shared-analytics-preferences:end -->"""
 ANALYTICS_STYLE = '<link id="analytics-stylesheet" rel="stylesheet" href="/assets/css/analytics.css?v=1" />'
 

@@ -26,6 +26,10 @@
       route = new URL(canonical.href);
       if (route.origin !== location.origin ||
           !/^\/(?:[a-z0-9-]+\/)*$/.test(route.pathname)) return;
+      // Set the empty collector's URL and title before Google's default page view.
+      // The visible portfolio document and its history stay unchanged.
+      history.replaceState(null, '', route.pathname);
+      document.title = 'Portfolio ' + route.pathname;
     } catch {
       return;
     }
@@ -41,7 +45,7 @@
     gtag('config', measurementId, {
       send_page_view: true,
       page_location: route.origin + route.pathname,
-      page_title: 'Portfolio ' + route.pathname,
+      page_title: document.title,
       page_referrer: '',
       allow_google_signals: false,
       allow_ad_personalization_signals: false
@@ -75,7 +79,7 @@
     frame.hidden = true;
     frame.title = 'Google Analytics';
     frame.referrerPolicy = 'no-referrer';
-    frame.src = '/assets/analytics/collector.html';
+    frame.src = '/assets/analytics/collector.html?v=2';
     document.body.append(frame);
   }
 
