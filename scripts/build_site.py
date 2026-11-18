@@ -31,7 +31,7 @@ def render_analytics(source, relative):
     if body.count('</head>') != 1:
         raise ValueError(f'{relative}: expected one closing head tag')
     body = re.sub(r'<link rel="apple-touch-icon"[^>]*>\n?', '', body)
-    body = body.replace('</head>', '<link rel="apple-touch-icon" sizes="1254x1254" href="/assets/apple-touch-icon.png" />\n</head>')
+    body = body.replace('</head>', '<link rel="apple-touch-icon" sizes="1254x1254" href="/assets/apple-touch-icon.png?v=2" />\n</head>')
     return body + ANALYTICS + '\n' + GOOGLE_ANALYTICS + '\n' + closing + tail
 
 
