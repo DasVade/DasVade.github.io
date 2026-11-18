@@ -27,6 +27,8 @@ measurement request before opt-in. A separate collector document reports one
 page view per permitted page load using the canonical path with no query,
 fragment, referring URL or personal title. Google advertising consent stays
 denied. Withdrawal stops Google Analytics and clears its cookies for the site.
+Re-enabling after withdrawal reloads the page so the tag starts once in a fresh
+document rather than issuing a second configuration on the same page.
 
 Publication content is stored once in `content/publications.json`; the static renderer reuses it on the homepage and Publications page. The Experience page lists the UAES Software Engineer internship, Jun 2025 – Aug 2025. `content/data.json` is historical, unused placeholder data and is not used to generate the website.
 

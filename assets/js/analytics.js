@@ -73,13 +73,19 @@
   }
 
   function start() {
-    if (started || preference() !== 'granted') return;
+    if (preference() !== 'granted' || frame) return;
+    // After withdrawal, restart in a fresh document instead of configuring
+    // the same page twice and accidentally duplicating its page_view.
+    if (started) {
+      window.location.reload();
+      return;
+    }
     started = true;
     frame = document.createElement('iframe');
     frame.hidden = true;
     frame.title = 'Google Analytics';
     frame.referrerPolicy = 'no-referrer';
-    frame.src = '/assets/analytics/collector.html?v=2';
+    frame.src = '/assets/analytics/collector.html?v=3';
     document.body.append(frame);
   }
 
