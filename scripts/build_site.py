@@ -30,8 +30,8 @@ def render_analytics(source, relative):
         raise ValueError(f'{relative}: expected one closing body tag')
     if body.count('</head>') != 1:
         raise ValueError(f'{relative}: expected one closing head tag')
-    if 'rel="apple-touch-icon"' not in body:
-        body = body.replace('</head>', '<link rel="apple-touch-icon" sizes="192x192" href="/assets/favicon.png" />\n</head>')
+    body = re.sub(r'<link rel="apple-touch-icon"[^>]*>\n?', '', body)
+    body = body.replace('</head>', '<link rel="apple-touch-icon" sizes="1254x1254" href="/assets/apple-touch-icon.png" />\n</head>')
     return body + ANALYTICS + '\n' + GOOGLE_ANALYTICS + '\n' + closing + tail
 
 
