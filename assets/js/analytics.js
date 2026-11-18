@@ -19,17 +19,19 @@
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-  window.gtag('js', new Date());
-  // Standard cookie-based GA4; no fabricated consent choices or custom timer.
-  // GA4 measures focus/visibility on this top-level document itself.
-  window.gtag('config', measurementId, {
-    send_page_view: true,
+  // Set page/privacy parameters before initialization, including the tag's
+  // automatic events. Current Google tags support global in-page settings.
+  window.gtag('set', {
     page_location: route.origin + route.pathname,
     page_title: 'Portfolio ' + route.pathname,
     page_referrer: '',
     allow_google_signals: false,
     allow_ad_personalization_signals: false
   });
+  window.gtag('js', new Date());
+  // Standard cookie-based GA4; no fabricated consent choices or custom timer.
+  // GA4 measures focus/visibility on this top-level document itself.
+  window.gtag('config', measurementId, { send_page_view: true });
 
   const tag = document.createElement('script');
   tag.id = 'portfolio-google-tag';
