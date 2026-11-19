@@ -44,7 +44,15 @@ def publication_markup(compact=False):
     cards = []
     heading = 'h3' if compact else 'h2'
     for entry in entries:
-        authors = ', '.join('<strong>' + escape(name) + '</strong>' if name == 'Yixiao Liu' else escape(name) for name in entry['authors'])
+        author_labels = []
+        for name in entry['authors']:
+            if name == 'Yixiao Liu':
+                author_labels.append(f'<strong>{escape(name)}</strong>')
+            else:
+                given, _, surname = name.rpartition(' ')
+                label = f'{given[0]}. {surname}' if given else name
+                author_labels.append(escape(label))
+        authors = ', '.join(author_labels)
         figure = escape(entry['figure'], quote=True)
         links = ('<p class="card-links"><a href="' + escape(entry['arxiv_url'], quote=True) + '">[arxiv]</a></p>') if entry.get('arxiv_url') else ''
         cards.append(f'''<article class="publication-entry{' publication-compact' if compact else ''}">

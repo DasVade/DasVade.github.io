@@ -16,3 +16,8 @@ uses them to identify the education entries, without implying endorsement.
 `uaes.png` is the original transparent 470×215 logo served by the
 [UAES official recruiting site](https://www.hotjob.cn/wt/UAES/web/index).
 Artwork and colors are unchanged; the Experience entry preserves its proportions.
+
+## Institute of Automation, Chinese Academy of Sciences
+
+`casia-emblem.jpg` is the original 238 × 236 px emblem from the institute's
+[official visual identity page](https://ia.cas.cn/gkjj/xxbs/).
