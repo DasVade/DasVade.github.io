@@ -1,0 +1,73 @@
+.coastal-hero {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 27rem;
+  padding: clamp(1.5rem, 5.6vw, 3rem);
+  background: linear-gradient(180deg, #101e32d9 0%, #101e32b3 24%, #101e3200 64%),
+    #253d52 url("../coastal-hero.jpg") center / cover no-repeat;
+  color: #fff;
+  text-align: left;
+}
+
+.coastal-hero h1 {
+  color: inherit;
+  font-family: "Dancing Script", "Segoe Script", cursive;
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  line-height: 1.16;
+  text-align: left;
+}
+
+.coastal-hero h1 span[lang="zh-Hans"] { color: #e4edf7; }
+
+.coastal-hero .meta-info {
+  margin: .6rem 0 .75rem;
+  color: #f2f6fc;
+}
+
+.coastal-hero .contact-links {
+  justify-content: flex-start;
+  margin: 0;
+  row-gap: .42rem;
+}
+
+.coastal-hero .contact-links .contact-item {
+  color: #fff;
+  text-decoration-color: #c9d9ee;
+}
+
+.coastal-hero .contact-links a:focus-visible { outline-color: #fff; }
+
+.coastal-hero .quote-minimal {
+  margin-top: .9rem;
+  color: #f2f6fc;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .coastal-hero {
+    aspect-ratio: 3 / 4;
+    min-height: 34rem;
+    padding: 1.45rem 1.1rem;
+    background-image: linear-gradient(180deg, #101e32d9 0%, #101e32b3 26%, #101e327a 43%, #101e3200 62%),
+      url("../coastal-hero.jpg");
+    background-position: center, 55% center;
+  }
+
+  .coastal-hero .meta-info,
+  .coastal-hero .contact-links,
+  .coastal-hero .quote-minimal { font-size: .92rem; }
+
+  .coastal-hero .contact-links { column-gap: .85rem; }
+}
+
+@media (max-width: 360px) {
+  .coastal-hero {
+    min-height: 42rem;
+    padding-top: 1.2rem;
+  }
+
+  .coastal-hero .quote-minimal { margin-top: .65rem; }
+}
